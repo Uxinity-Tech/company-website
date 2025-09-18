@@ -97,7 +97,7 @@ const Contact = () => {
   );
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
+    <div className="relative min-h-screen bg-black overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <GlowOrb className="top-10 left-10" color="#3B82F6" size={500} />
         <GlowOrb className="bottom-10 right-10" color="#A855F7" size={400} />
