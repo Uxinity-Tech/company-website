@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Logo from '../assets/Logo.jpeg';
+import Logo from '../assets/Logo.png';
 import { Link } from 'react-router-dom';
 const Header = () => {
   return (
@@ -10,7 +10,7 @@ const Header = () => {
           <img
             src={Logo}
             alt="UXinity"
-            className="h-26 w-30"
+            className="h-15 w-15 ml-15"
           />
         </Link>
       </div>

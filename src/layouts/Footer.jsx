@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Logo from '../assets/Logo.jpeg';
+import Logo from '../assets/Logo.png';
 const Footer = () => {
   return (
     <footer className="py-12 px-6 border-t bg-white">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src={Logo} alt="UXinity" className="h-18 w-30" />
-            <span className="text-xl font-bold -ml-[44px]">UXinity</span>
+            <img src={Logo} alt="UXinity" className="h-15 w-15" />
+            <span className="text-xl font-bold">UXinity</span>
 
           </div>
         </div>

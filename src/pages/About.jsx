@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle, Settings, Shield } from "lucide-react";
 import ToggleQuickMenu from "../components/ToggleQuickMenu";
 import mission from '../assets/images/mission.png';
 import vision from '../assets/images/vision.png';
+
 // Stagger container animation for child elements
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -32,6 +33,9 @@ const cardVariants = {
   },
   tap: { scale: 0.98 },
 };
+
+// Fallback image URL for both mission and vision
+const fallbackImage = "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80";
 
 export default function AboutPage() {
   const sectionRef = useRef(null);
@@ -82,19 +86,7 @@ export default function AboutPage() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b z-50"
       >
-        {/* <div className="max-w-7xl mx-auto px-6 py-4 flex justify-center">
-          <motion.a
-            href="/"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <img
-              src="/assets/Logo-Bzj2KXyx.png"
-              alt="UXinity"
-              className="h-8 w-8"
-            />
-          </motion.a>
-        </div> */}
+        {/* Navigation content commented out in original code */}
       </motion.nav>
 
       {/* About Section */}
@@ -128,7 +120,7 @@ export default function AboutPage() {
             </motion.p>
           </motion.div>
 
-          {/* Row 1 */}
+          {/* Row 1: Mission */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10"
             variants={containerVariants}
@@ -173,15 +165,14 @@ export default function AboutPage() {
                 loading="lazy"
                 referrerPolicy="no-referrer"
                 onError={(e) => {
-                  e.currentTarget.src =
-                    {mission};
+                  e.currentTarget.src = fallbackImage;
                 }}
                 className="w-full h-full object-cover"
               />
             </motion.div>
           </motion.div>
 
-          {/* Row 2 */}
+          {/* Row 2: Vision */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10"
             variants={containerVariants}
@@ -203,8 +194,7 @@ export default function AboutPage() {
                 loading="lazy"
                 referrerPolicy="no-referrer"
                 onError={(e) => {
-                  e.currentTarget.src =
-                    "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80";
+                  e.currentTarget.src = fallbackImage;
                 }}
                 className="w-full h-full object-cover"
               />
@@ -262,7 +252,7 @@ export default function AboutPage() {
                   title: "Excellence",
                   description: "We strive for the highest standards in every project we undertake.",
                 },
-              ].map((value, idx) => (
+              ].map((value) => (
                 <motion.div
                   key={value.title}
                   variants={cardVariants}
@@ -280,71 +270,6 @@ export default function AboutPage() {
               ))}
             </div>
           </motion.div>
-
-          {/* Row 4: Our Team (Commented Out, but with Animations) */}
-          {/* <motion.div
-            className="text-center mb-16"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.h3
-              variants={childVariants}
-              className="text-3xl font-bold mb-6"
-            >
-              Meet Our Team
-            </motion.h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  name: "John Doe",
-                  role: "CEO & Founder",
-                  image: "https://randomuser.me/api/portraits/men/32.jpg",
-                },
-                {
-                  name: "Jane Smith",
-                  role: "Head of Design",
-                  image: "https://randomuser.me/api/portraits/women/44.jpg",
-                },
-                {
-                  name: "Mike Johnson",
-                  role: "Lead Developer",
-                  image: "https://randomuser.me/api/portraits/men/52.jpg",
-                },
-              ].map((member, idx) => (
-                <motion.div
-                  key={member.name}
-                  variants={cardVariants}
-                  initial="rest"
-                  whileHover="hover"
-                  whileTap="tap"
-                  className="p-6 rounded-lg shadow bg-white"
-                >
-                  <motion.img
-                    variants={childVariants}
-                    src={member.image}
-                    alt={member.name}
-                    className="w-24 h-24 rounded-full mx-auto mb-3"
-                    whileHover={{ rotate: 5, scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <motion.h4
-                    variants={childVariants}
-                    className="font-semibold text-lg mb-1 text-gray-900"
-                  >
-                    {member.name}
-                  </motion.h4>
-                  <motion.p
-                    variants={childVariants}
-                    className="text-gray-600 text-sm"
-                  >
-                    {member.role}
-                  </motion.p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div> */}
 
           {/* Row 5: Testimonials */}
           <motion.div
@@ -374,7 +299,7 @@ export default function AboutPage() {
                   author: "David Brown",
                   role: "Product Owner",
                 },
-              ].map((testimonial, idx) => (
+              ].map((testimonial) => (
                 <motion.div
                   key={testimonial.author}
                   variants={cardVariants}
@@ -408,7 +333,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Toggle menu */}
       <ToggleQuickMenu />
     </motion.div>
   );
