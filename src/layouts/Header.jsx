@@ -10,7 +10,7 @@ const Header = () => {
           <img
             src={Logo}
             alt="UXinity"
-            className="h-18 w-30"
+            className="h-25 w-30"
           />
         </Link>
       </div>

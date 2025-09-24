@@ -141,7 +141,7 @@ export default function ServiceSlide() {
       intervalRef.current = setInterval(() => {
         currentSlide = (currentSlide + 1) % totalSlides;
         scrollToSlide(currentSlide);
-      }, 3000); // 5 seconds
+      }, 10000); // 5 seconds
     };
 
     startAutoSlide();
