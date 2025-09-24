@@ -111,7 +111,7 @@ export default function ThemedBanner() {
         }
       `}</style>
 
-      <div className="relative z-20 grid place-items-center text-center px-6 mt-13">
+      <div className="relative z-20 grid place-items-center text-center px-6 mt-30">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
