@@ -29,7 +29,7 @@ const Footer = () => {
         <div>
           <div className="flex items-center gap-3 mb-4">
             <img src={Logo} alt="UXinity" className="h-15 w-15" />
-             <span className="text-xl font-bold text-black">UXinity</span>
+            <span className="text-xl font-bold text-black dark:text-white">UXinity</span>
           </div>
         </div>
         <div>
@@ -138,7 +138,7 @@ const Footer = () => {
       variants={{ initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } } }}
       initial="initial"
       animate="animate"
-      className="mt-6 text-5xl font-extrabold text-black md:hidden px-4"
+      className="mt-6 ml-[-26px] text-8xl font-extrabold text-black md:hidden px-4"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
       UXinity
