@@ -29,44 +29,44 @@ const Footer = () => {
         <div>
           <div className="flex items-center gap-3 mb-4">
             <img src={Logo} alt="UXinity" className="h-15 w-15" />
-            <span className="text-xl font-bold text-gray-900 dark:text-white">UXinity</span>
+            <span className="text-xl font-bold text-black dark:text-white">UXinity</span>
           </div>
         </div>
         <div>
-          <h4 className="font-medium mb-4 text-gray-900 dark:text-white">Navigation</h4>
-          <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+          <h4 className="font-medium mb-4 text-black dark:text-white">Navigation</h4>
+          <ul className="space-y-2 text-sm text-black dark:text-gray-300">
             <li>
-              <a href="#home" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+              <a href="#home" className="hover:text-black dark:hover:text-white transition-colors">
                 Home
               </a>
             </li>
             <li>
-              <a href="#about" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+              <a href="#about" className="hover:text-black dark:hover:text-white transition-colors">
                 About
               </a>
             </li>
             <li>
-              <a href="#projects" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+              <a href="#projects" className="hover:text-black dark:hover:text-white transition-colors">
                 Projects
               </a>
             </li>
             <li>
-              <a href="#contact" className="hover:text-gray-900 dark:hover:text-white transition-colors">
+              <a href="#contact" className="hover:text-black dark:hover:text-white transition-colors">
                 Contact
               </a>
             </li>
           </ul>
         </div>
         <div>
-          <h4 className="font-medium mb-4 text-gray-900 dark:text-white">Contact Info</h4>
-          <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+          <h4 className="font-medium mb-4 text-black dark:text-white">Contact Info</h4>
+          <ul className="space-y-2 text-sm text-black dark:text-gray-300">
             <li>Uxinityofficial@gmail.com</li>
             <li>+91 9446068542</li>
           </ul>
         </div>
         <div>
-          <h4 className="font-medium mb-4 text-gray-900 dark:text-white">Follow Us</h4>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">Stay connected for updates</p>
+          <h4 className="font-medium mb-4 text-black dark:text-white">Follow Us</h4>
+          <p className="text-sm text-black dark:text-gray-300 mb-4">Stay connected for updates</p>
           <div className="flex space-x-4 flex-wrap gap-y-4">
             <motion.a
               href="https://twitter.com"
@@ -149,7 +149,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t mt-8 pt-8 text-center">
-        <p className="text-sm text-gray-600 dark:text-gray-300">
+        <p className="text-sm text-black dark:text-gray-300">
           © 2025 UXinity. All rights reserved.
         </p>
         <motion.div
