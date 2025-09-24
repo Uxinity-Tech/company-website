@@ -29,44 +29,28 @@ const Footer = () => {
         <div>
           <div className="flex items-center gap-3 mb-4">
             <img src={Logo} alt="UXinity" className="h-15 w-15" />
-            <span className="text-xl font-bold text-black dark:text-white">UXinity</span>
+             <span className="text-xl font-bold text-black">UXinity</span>
           </div>
         </div>
         <div>
-          <h4 className="font-medium mb-4 text-black dark:text-white">Navigation</h4>
-          <ul className="space-y-2 text-sm text-black dark:text-gray-300">
-            <li>
-              <a href="#home" className="hover:text-black dark:hover:text-white transition-colors">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#about" className="hover:text-black dark:hover:text-white transition-colors">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#projects" className="hover:text-black dark:hover:text-white transition-colors">
-                Projects
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:text-black dark:hover:text-white transition-colors">
-                Contact
-              </a>
-            </li>
-          </ul>
+      <h4 className="font-medium mb-4 text-black">Navigation</h4>
+      <ul className="space-y-2 text-sm text-black">
+        <li><a href="#home" className="hover:text-black transition-colors">Home</a></li>
+        <li><a href="#about" className="hover:text-black transition-colors">About</a></li>
+        <li><a href="#projects" className="hover:text-black transition-colors">Projects</a></li>
+        <li><a href="#contact" className="hover:text-black transition-colors">Contact</a></li>
+      </ul>
+    </div>
+        <div>
+          <h4 className="font-medium mb-4 text-black">Contact Info</h4>
+      <ul className="space-y-2 text-sm text-black">
+        <li>Uxinityofficial@gmail.com</li>
+        <li>+91 9446068542</li>
+      </ul>
         </div>
         <div>
-          <h4 className="font-medium mb-4 text-black dark:text-white">Contact Info</h4>
-          <ul className="space-y-2 text-sm text-black dark:text-gray-300">
-            <li>Uxinityofficial@gmail.com</li>
-            <li>+91 9446068542</li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-medium mb-4 text-black dark:text-white">Follow Us</h4>
-          <p className="text-sm text-black dark:text-gray-300 mb-4">Stay connected for updates</p>
+        <h4 className="font-medium mb-4 text-black">Follow Us</h4>
+      <p className="text-sm text-black mb-4">Stay connected for updates</p>
           <div className="flex space-x-4 flex-wrap gap-y-4">
             <motion.a
               href="https://twitter.com"
@@ -148,20 +132,18 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="border-t mt-8 pt-8 text-center">
-        <p className="text-sm text-black dark:text-gray-300">
-          © 2025 UXinity. All rights reserved.
-        </p>
-        <motion.div
-          variants={textVariants}
-          initial="initial"
-          animate="animate"
-          className="mt-6 text-5xl font-extrabold text-gray-900 dark:text-gray-100 md:hidden px-4"
-          style={{ fontFamily: "'Poppins', sans-serif" }}
-        >
-          UXinity
-        </motion.div>
-      </div>
+      <div className="border-t mt-8 pt-8 text-center text-black">
+    <p className="text-sm text-black">© 2025 UXinity. All rights reserved.</p>
+    <motion.div
+      variants={{ initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } } }}
+      initial="initial"
+      animate="animate"
+      className="mt-6 text-5xl font-extrabold text-black md:hidden px-4"
+      style={{ fontFamily: "'Poppins', sans-serif" }}
+    >
+      UXinity
+    </motion.div>
+  </div>
     </footer>
   );
 };
