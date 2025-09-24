@@ -1,9 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../layouts/Layout";
-import Home from "../pages/Home";
-import About from "../pages/About";
-import Service from "../pages/Service";
-import Contact from "../pages/Contact";
+
+// Import your converted JSX pages
+import Landing from "../pages/Landing";           // formerly Home
+import Expertise from "../pages/Expertise";
+import Projects from "../pages/Project";
+import Contact from "../pages/Contact";           // you can keep Contact as is
+import About from "../pages/About";               // you can keep About as is
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -11,19 +15,23 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Landing />,           // Landing replaces Home
       },
       {
         path: "about",
-        element:<About />,
+        element: <About />,
       },
-       {
-        path: "services",
-        element:<Service />,
+      {
+        path: "expertise",
+        element: <Expertise />,     // ExpertisePage replaces Service
+      },
+      {
+        path: "projects",
+        element: <Projects />,      // New ProjectsPage route
       },
       {
         path: "contact",
-        element:<Contact />,
+        element: <Contact />,
       },
     ],
   },
