@@ -138,7 +138,7 @@ const Footer = () => {
       variants={{ initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } } }}
       initial="initial"
       animate="animate"
-      className="mt-6 ml-[-20px] text-8xl font-extrabold text-black md:hidden px-4"
+      className="mt-6 ml-[-18px] text-8xl font-extrabold text-black md:hidden px-4"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
       UXinity
