@@ -58,7 +58,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <main className="max-w-7xl mx-auto px-6 py-10">
+      <main className="max-w-7xl mx-auto px-6 py-10 mt-19">
         <motion.div
           className="mb-8 mt-6"
           initial={{ opacity: 0, y: 20 }}

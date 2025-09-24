@@ -2,7 +2,8 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, CheckCircle, Settings, Shield } from "lucide-react";
 import ToggleQuickMenu from "../components/ToggleQuickMenu";
-
+import mission from '../assets/images/mission.png';
+import vision from '../assets/images/vision.png';
 // Stagger container animation for child elements
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -167,13 +168,13 @@ export default function AboutPage() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true }}
-                src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1600&auto=format&fit=crop"
+                src={mission}
                 alt="Mission visual"
                 loading="lazy"
                 referrerPolicy="no-referrer"
                 onError={(e) => {
                   e.currentTarget.src =
-                    "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80";
+                    {mission};
                 }}
                 className="w-full h-full object-cover"
               />
@@ -197,7 +198,7 @@ export default function AboutPage() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true }}
-                src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop"
+                src={vision}
                 alt="What we do visual"
                 loading="lazy"
                 referrerPolicy="no-referrer"
