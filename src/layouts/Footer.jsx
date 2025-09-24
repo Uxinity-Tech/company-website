@@ -29,11 +29,11 @@ const Footer = () => {
         <div>
           <div className="flex items-center gap-3 mb-4">
             <img src={Logo} alt="UXinity" className="h-15 w-15" />
-            <span className="text-xl font-bold text-black dark:text-white">UXinity</span>
+            <span className="text-xl font-bold text-black dark:text-black">UXinity</span>
           </div>
         </div>
         <div>
-      <h4 className="font-medium mb-4 text-black">Navigation</h4>
+      <h4 className="font-medium mb-4 text-black">Company</h4>
       <ul className="space-y-2 text-sm text-black">
         <li><a href="#home" className="hover:text-black transition-colors">Home</a></li>
         <li><a href="#about" className="hover:text-black transition-colors">About</a></li>
