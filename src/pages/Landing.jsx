@@ -3,10 +3,10 @@ import { Shield, Lock, Eye, Users, Zap, CheckCircle, ArrowRight, Mail, Phone, Gl
 import ServiceSlide from "../Landing/ServiceSlide";
 import TestimonialsRotator from "../Landing/TestimonialsRotator";
 import ThemedBanner from "../Landing/ThemedBanner";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import ToggleQuickMenu from "../components/ToggleQuickMenu";
-import Loader from "../components/Loader";
+
 // Animation variants for staggered grid items
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -23,36 +23,12 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-// Scroll-triggered animation hook
-const useInView = (ref) => {
-  const [isInView, setIsInView] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [ref]);
-  return isInView;
-};
-
 export default function Landing() {
-    useEffect(() => {
-      window.scrollTo(0, 0);
-      const timer = setTimeout(() => {
-        setLoading(false);
-      }, 1500); // show loader for 1.5s
-      return () => clearTimeout(timer);
-    }, []);
   const [selectedService, setSelectedService] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();
 
   // Form validation
-  if (loading) return <Loader />; 
   const validateForm = (formData) => {
     const errors = {};
     if (!formData.name) errors.name = "Name is required";
@@ -88,23 +64,6 @@ export default function Landing() {
       transition={{ duration: 0.7, ease: "easeInOut" }}
       className="min-h-screen bg-gradient-to-b from-gray-50 to-white"
     >
-      {/* Sticky Navigation */}
-      {/* <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm"
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold font-roboto-condensed text-black">UXinity</h1>
-          <div className="flex gap-6">
-            <a href="#about" className="text-gray-700 hover:text-black transition-colors">About</a>
-            <a href="#projects" className="text-gray-700 hover:text-black transition-colors">Projects</a>
-            <a href="#contact" className="text-gray-700 hover:text-black transition-colors">Contact</a>
-          </div>
-        </div>
-      </motion.nav> */}
-
       {/* Banner */}
       <ThemedBanner />
 
@@ -434,49 +393,6 @@ export default function Landing() {
 
       {/* Toggle Menu */}
       <ToggleQuickMenu />
-
-      {/* Footer */}
-      {/* <footer className="py-12 px-6 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-xl font-bold font-roboto-condensed">UXinity</h3>
-            <p className="text-sm text-gray-400 mt-2">Crafting exceptional digital experiences since {new Date().getFullYear()}.</p>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold">Quick Links</h4>
-            <ul className="mt-2 space-y-2">
-              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">About</a></li>
-              <li><a href="#projects" className="text-gray-400 hover:text-white transition-colors">Projects</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold">Connect</h4>
-            <div className="mt-2 flex gap-4">
-              {[
-                { href: "https://www.linkedin.com", label: "LinkedIn" },
-                { href: "https://x.com", label: "X" },
-                { href: "https://www.instagram.com", label: "Instagram" },
-                { href: "https://github.com", label: "GitHub" },
-              ].map((social, idx) => (
-                <motion.a
-                  key={idx}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-gray-400 hover:text-white"
-                  whileHover={{ scale: 1.2, transition: { duration: 0.2 } }}
-                >
-                  {social.label}
-                </motion.a>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="mt-8 text-center text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} UXinity. All rights reserved.
-        </div>
-      </footer> */}
     </motion.div>
   );
 }

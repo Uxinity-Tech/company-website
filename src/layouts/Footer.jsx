@@ -52,7 +52,7 @@ const Footer = () => {
         <h4 className="font-medium mb-4 text-black">Follow Us</h4>
       <p className="text-sm text-black mb-4">Stay connected for updates</p>
           <div className="flex space-x-4 flex-wrap gap-y-4">
-            <motion.a
+            {/* <motion.a
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -62,9 +62,9 @@ const Footer = () => {
               className="text-white bg-gray-800 p-2 rounded-full hover:bg-white hover:text-black transition-colors"
             >
               <FaTwitter size={20} />
-            </motion.a>
+            </motion.a> */}
             <motion.a
-              href="https://instagram.com"
+              href="https://www.instagram.com/uxin_ity?igsh=MW9jYTRqd3NzMmZudg=="
               target="_blank"
               rel="noopener noreferrer"
               variants={iconVariants}
@@ -74,7 +74,7 @@ const Footer = () => {
             >
               <FaInstagram size={20} />
             </motion.a>
-            <motion.a
+            {/* <motion.a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -84,8 +84,8 @@ const Footer = () => {
               className="text-white bg-gray-800 p-2 rounded-full hover:bg-white hover:text-black transition-colors"
             >
               <FaLinkedin size={20} />
-            </motion.a>
-            <motion.a
+            </motion.a> */}
+            {/* <motion.a
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -95,9 +95,9 @@ const Footer = () => {
               className="text-white bg-gray-800 p-2 rounded-full hover:bg-white hover:text-black transition-colors"
             >
               <FaGithub size={20} />
-            </motion.a>
+            </motion.a> */}
             <motion.a
-              href="https://facebook.com"
+              href="https://www.facebook.com/share/1ABSH2corU/"
               target="_blank"
               rel="noopener noreferrer"
               variants={iconVariants}
