@@ -6,7 +6,7 @@ import ThemedBanner from "../Landing/ThemedBanner";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import ToggleQuickMenu from "../components/ToggleQuickMenu";
-
+import Chatbot from "../components/Chatbot";
 // Animation variants for staggered grid items
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -22,8 +22,8 @@ const itemVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
-
 export default function Landing() {
+  <Chatbot />
   const [selectedService, setSelectedService] = useState("");
   const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();

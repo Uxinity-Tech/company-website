@@ -37,6 +37,31 @@ export default function ThemedBanner() {
     },
   };
 
+  const buttonVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30,
+      scale: 0.9,
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 12,
+        delay: 0.8,
+      },
+    },
+  };
+
+  const handleConsultationClick = () => {
+    // Add your consultation form/modal trigger here
+    console.log("Get Consultation clicked");
+    // Example: open modal, scroll to form, etc.
+  };
+
   return (
     <section
       className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
@@ -109,6 +134,53 @@ export default function ThemedBanner() {
         @media (min-width: 768px) {
           .poster-logo { bottom: 1.2vw; }
         }
+
+        /* Get Consultation Button Styles */
+        .consultation-btn {
+          position: relative;
+          z-index: 30;
+          background: black;
+          color: white;
+          border: 2px solid black;
+          padding: 1rem 2.5rem;
+          font-family: 'Work Sans', sans-serif;
+          font-weight: 600;
+          font-size: 1.1rem;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+          overflow: hidden;
+        }
+        .consultation-btn:hover {
+          background: white;
+          color: black;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+        .consultation-btn:active {
+          transform: translateY(0);
+        }
+        .consultation-btn::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          transition: left 0.5s;
+        }
+        .consultation-btn:hover::before {
+          left: 100%;
+        }
+        @media (max-width: 768px) {
+          .consultation-btn {
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+          }
+        }
       `}</style>
 
       <div className="relative z-20 grid place-items-center text-center px-6 mt-30">
@@ -168,6 +240,20 @@ export default function ThemedBanner() {
               <motion.span variants={itemVariants}>y</motion.span>
             </motion.div>
           </motion.div>
+
+          {/* Get Consultation Button */}
+          <motion.button
+            className="consultation-btn mt-12"
+            variants={buttonVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={handleConsultationClick}
+            aria-label="Get a free consultation"
+          >
+            Get Consultation
+          </motion.button>
         </motion.div>
       </div>
     </section>
