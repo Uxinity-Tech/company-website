@@ -95,7 +95,7 @@ export default function ToggleQuickMenu() {
               { label: "Home", path: "/" },
               { label: "About Us", path: "/about" },
               { label: "What We Do", path: "/expertise" },
-              { label: "Our Work", path: "/service" },
+              { label: "Our Services", path: "/service" },
               { label: "Projects", path: "/projects" },
               { label: "Contact", path: "/contact" },
             ].map((item) => (
