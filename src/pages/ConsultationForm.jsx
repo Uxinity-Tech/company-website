@@ -391,7 +391,7 @@ const ConsultationForm = () => {
                   className={`w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all shadow-sm ${
                     formErrors.phone ? 'border-red-500 focus:ring-red-500' : ''
                   }`}
-                  placeholder="+91 9446068542"
+                  placeholder="+91 9876543210"
                   whileFocus={{ scale: 1.02 }}
                 />
                 {formErrors.phone && <p className="text-red-500 text-sm mt-1 flex items-center gap-1"><AlertCircle className="w-4 h-4" /> {formErrors.phone}</p>}

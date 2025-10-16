@@ -262,36 +262,42 @@
 // }
 
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function ThemedBanner() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const { scrollYProgress } = useScroll();
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
   
-  // Parallax transforms
-  const yPoster = useTransform(scrollYProgress, [0, 1], [0, -120]);
-  const yCTA = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const yPoster = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const yCTA = useTransform(scrollYProgress, [0, 1], [0, -30]);
   
-  // Mouse parallax
+  // Simplified mouse parallax - only on poster
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springConfig = { damping: 25, stiffness: 150 };
+  const springConfig = { damping: 30, stiffness: 100 };
   const x = useSpring(mouseX, springConfig);
   const y = useSpring(mouseY, springConfig);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
-      const xPct = (clientX / innerWidth - 0.5) * 2;
-      const yPct = (clientY / innerHeight - 0.5) * 2;
-      mouseX.set(xPct * 20);
-      mouseY.set(yPct * 20);
-      setMousePosition({ x: clientX, y: clientY });
+      const rect = sectionRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      
+      const xPct = (e.clientX - rect.left) / rect.width - 0.5;
+      const yPct = (e.clientY - rect.top) / rect.height - 0.5;
+      
+      mouseX.set(xPct * 15);
+      mouseY.set(yPct * 15);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const section = sectionRef.current;
+    if (section) {
+      section.addEventListener("mousemove", handleMouseMove);
+      return () => section.removeEventListener("mousemove", handleMouseMove);
+    }
   }, [mouseX, mouseY]);
 
   const containerVariants = {
@@ -346,7 +352,11 @@ export default function ThemedBanner() {
   };
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-gray-50 to-gray-100">
+    <section 
+      ref={sectionRef}
+      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-gray-50 to-gray-100"
+      style={{ transform: 'translateZ(0)' }} // Hardware acceleration
+    >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Inter:wght@600;700&display=swap');
         
@@ -374,7 +384,7 @@ export default function ThemedBanner() {
           font-family: 'Space Grotesk', 'Work Sans', system-ui, sans-serif;
           font-weight: 900;
           letter-spacing: -0.02em;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: filter 0.2s ease;
         }
         
         @media (min-width: 768px) {
@@ -394,8 +404,7 @@ export default function ThemedBanner() {
         }
         
         .poster span:hover {
-          transform: scale(1.02) translateZ(10px);
-          filter: brightness(1.1);
+          filter: brightness(1.05);
         }
         
         .poster .reverse-color:nth-child(odd) { 
@@ -588,7 +597,6 @@ export default function ThemedBanner() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="flex flex-col items-center"
-          style={{ x, y }}
         >
           <div className="visibly-hidden">
             <h1>Uxinity</h1>
@@ -598,7 +606,12 @@ export default function ThemedBanner() {
           <motion.div
             className="poster-wrapper"
             aria-hidden
-            style={{ y: yPoster, willChange: "transform" }}
+            style={{ 
+              y: yPoster,
+              x, 
+              y: y, 
+              willChange: "transform" 
+            }}
           >
             <motion.div 
               className="poster" 
@@ -607,34 +620,34 @@ export default function ThemedBanner() {
               initial="hidden"
               animate="visible"
             >
-              <motion.span variants={itemVariants} whileHover={{ scale: 1.05 }}>U</motion.span>
-              <motion.span className="letter-l" variants={itemVariants} whileHover={{ scale: 1.05 }}>X</motion.span>
-              <motion.span className="letter-aa" variants={itemVariants} whileHover={{ scale: 1.05 }}>i</motion.span>
-              <motion.span className="letter-k" variants={itemVariants} whileHover={{ scale: 1.05 }}>n</motion.span>
-              <motion.span className="reverse-color letter-a" variants={itemVariants} whileHover={{ scale: 1.05 }}>i</motion.span>
-              <motion.span className="reverse-color letter-t pop-out" variants={itemVariants} whileHover={{ scale: 1.05 }}>t</motion.span>
-              <motion.span className="reverse-color letter-e" variants={itemVariants} whileHover={{ scale: 1.05 }}>y</motion.span>
+              <motion.span variants={itemVariants}>U</motion.span>
+              <motion.span className="letter-l" variants={itemVariants}>X</motion.span>
+              <motion.span className="letter-aa" variants={itemVariants}>i</motion.span>
+              <motion.span className="letter-k" variants={itemVariants}>n</motion.span>
+              <motion.span className="reverse-color letter-a" variants={itemVariants}>i</motion.span>
+              <motion.span className="reverse-color letter-t pop-out" variants={itemVariants}>t</motion.span>
+              <motion.span className="reverse-color letter-e" variants={itemVariants}>y</motion.span>
               <motion.span className="small-text highlight" variants={itemVariants}>Uxinity</motion.span>
 
-              <motion.span variants={itemVariants} whileHover={{ scale: 1.05 }}>S</motion.span>
-              <motion.span variants={itemVariants} whileHover={{ scale: 1.05 }}>o</motion.span>
-              <motion.span className="letter-h" variants={itemVariants} whileHover={{ scale: 1.05 }}>l</motion.span>
-              <motion.span className="letter-w" variants={itemVariants} whileHover={{ scale: 1.05 }}>u</motion.span>
-              <motion.span className="reverse-color" variants={itemVariants} whileHover={{ scale: 1.05 }}>t</motion.span>
-              <motion.span className="reverse-color pop-out letter-r" variants={itemVariants} whileHover={{ scale: 1.05 }}>i</motion.span>
-              <motion.span className="reverse-color" variants={itemVariants} whileHover={{ scale: 1.05 }}>o</motion.span>
-              <motion.span className="reverse-color" variants={itemVariants} whileHover={{ scale: 1.05 }}>n</motion.span>
+              <motion.span variants={itemVariants}>S</motion.span>
+              <motion.span variants={itemVariants}>o</motion.span>
+              <motion.span className="letter-h" variants={itemVariants}>l</motion.span>
+              <motion.span className="letter-w" variants={itemVariants}>u</motion.span>
+              <motion.span className="reverse-color" variants={itemVariants}>t</motion.span>
+              <motion.span className="reverse-color pop-out letter-r" variants={itemVariants}>i</motion.span>
+              <motion.span className="reverse-color" variants={itemVariants}>o</motion.span>
+              <motion.span className="reverse-color" variants={itemVariants}>n</motion.span>
               <motion.span className="reverse-color small-text" variants={itemVariants}>
                 The future is UXinity + Design with intent. Build with impact.
               </motion.span>
 
-              <motion.span className="letter-w" variants={itemVariants} whileHover={{ scale: 1.05 }}>U</motion.span>
-              <motion.span variants={itemVariants} whileHover={{ scale: 1.05 }}>X</motion.span>
-              <motion.span variants={itemVariants} whileHover={{ scale: 1.05 }}>i</motion.span>
-              <motion.span variants={itemVariants} whileHover={{ scale: 1.05 }}>n</motion.span>
-              <motion.span variants={itemVariants} whileHover={{ scale: 1.05 }}>i</motion.span>
-              <motion.span variants={itemVariants} whileHover={{ scale: 1.05 }}>t</motion.span>
-              <motion.span variants={itemVariants} whileHover={{ scale: 1.05 }}>y</motion.span>
+              <motion.span className="letter-w" variants={itemVariants}>U</motion.span>
+              <motion.span variants={itemVariants}>X</motion.span>
+              <motion.span variants={itemVariants}>i</motion.span>
+              <motion.span variants={itemVariants}>n</motion.span>
+              <motion.span variants={itemVariants}>i</motion.span>
+              <motion.span variants={itemVariants}>t</motion.span>
+              <motion.span variants={itemVariants}>y</motion.span>
             </motion.div>
           </motion.div>
 

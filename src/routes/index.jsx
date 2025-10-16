@@ -8,6 +8,7 @@ import Projects from "../pages/Project";
 import Contact from "../pages/Contact";           
 import About from "../pages/About";            
 import Service from "../pages/Service";   
+// import Brochure from "../pages/ServicesBrochure";
 import ConsultationForm from "../pages/ConsultationForm"; // New consultation form
 
 
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
         path: "consultation",
         element: <ConsultationForm />,
       },
+      // {
+      //   path: "brochure",
+      //   element: <Brochure />,
+      // },
     ],
   },
 ]);

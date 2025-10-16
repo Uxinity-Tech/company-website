@@ -247,49 +247,503 @@ const Chatbot = () => {
     setMessages((prev) => [...prev, { from: "bot", text }]);
   };
 
-  const getBotReply = (msg) => {
-    // Your existing comprehensive Q&A logic here
-    if (msg.includes("contact") || msg.includes("email") || msg.includes("phone") || msg.includes("call")) {
-      return `📞 **Uxinity Contact**:
+const getBotReply = (msg) => {
+  // Contact information
+  if (msg.includes("contact") || msg.includes("email") || msg.includes("phone") || msg.includes("call") || msg.includes("number") || msg.includes("whatsapp")) {
+    return `📞 **Uxinity Contact Details**:
 • 📧 **Email**: Uxinityofficial@gmail.com
 • 📱 **Phone**: +91 9446068542 (Mon-Sat 9AM-8PM IST)
-• 💬 WhatsApp: +91 9446068542
+• 💬 **WhatsApp**: +91 9446068542
+• 🏢 **Location**: India (Remote & On-site)
 
 🔗 **Quick Actions**:
 • Click "Get Quote" for pricing
 • Click "Book Call" for consultation
-• Fill the form below for details`;
-    }
-    
-    if (msg.includes("uxinity") || msg.includes("company") || msg.includes("about")) {
-      return `🏢 **About Uxinity** - Leading IT Services:
-• Custom Web & Mobile Development
-• UI/UX Design Excellence
-• Cybersecurity Solutions
-• Cloud & DevOps Services
-• Digital Strategy
+• Fill form below for detailed inquiry`;
+  }
+  
+  // About company
+  if (msg.includes("uxinity") || msg.includes("company") || msg.includes("about") || msg.includes("who are you")) {
+    return `🏢 **About Uxinity** - Premium IT Solutions Provider
 
-📧 **Email**: Uxinityofficial@gmail.com
-💬 Click "Get Quote" or "Book Call" buttons!`;
-    }
-    
-    // Pricing triggers form
-    if (msg.includes("price") || msg.includes("cost") || msg.includes("budget")) {
-      handleSend(null, "Get Quote");
-      return `💰 **Pricing Guide**:\n• Static Website: $1K-$5K\n• Web App: $8K-$20K\n• Mobile App: $15K-$50K\n• UI/UX: $1.5K-$7.5K\n\n**Quote Form Opening Below!**`;
-    }
-    
-    return `🤖 **Uxinity Assistant**
+**Our Expertise**:
+• 🔧 Custom Web & Mobile Development
+• 🎨 Award-winning UI/UX Design
+• 🔒 Enterprise Cybersecurity
+• ☁️ Cloud Migration & DevOps
+• 🤖 AI/ML Integration
+• 📈 Digital Transformation
 
-**Popular Services**:
-• Web Development
-• Mobile Apps  
-• UI/UX Design
-• Cybersecurity
+**Why Choose Us**:
+• 100% Client Satisfaction
+• Agile Development Process
+• 24/7 Technical Support
+• Competitive Pricing
 
-💬 Try "Get Quote" or "Book Call" buttons!
-📞 +91 9446068542 | 📧 Uxinityofficial@gmail.com`;
-  };
+💬 Click "Get Quote" or "Book Call" to get started!`;
+  }
+  
+  // Web development questions
+  if (msg.includes("web") || msg.includes("website") || msg.includes("wordpress") || msg.includes("react") || msg.includes("frontend") || msg.includes("backend")) {
+    return `🌐 **Web Development Services**
+
+**Technologies We Use**:
+• Frontend: React, Vue, Angular, Next.js
+• Backend: Node.js, Python, PHP, Ruby
+• CMS: WordPress, Drupal, Custom
+• Frameworks: Laravel, Django, Express
+
+**Common Projects**:
+• Static Sites: $1K-$5K (1-4 weeks)
+• Dynamic Sites: $5K-$15K (4-12 weeks)
+• Web Apps: $15K-$50K+ (3-6 months)
+
+**Popular Questions**:
+• "Can you build e-commerce sites?" → Yes! Shopify, WooCommerce, custom
+• "Do you do SEO?" → Yes, full SEO optimization
+• "WordPress maintenance?" → Monthly packages available
+
+💰 Click "Get Quote" for custom pricing!`;
+  }
+  
+  // Mobile app development
+  if (msg.includes("mobile") || msg.includes("app") || msg.includes("ios") || msg.includes("android") || msg.includes("flutter") || msg.includes("react native")) {
+    return `📱 **Mobile App Development**
+
+**Platforms**:
+• iOS (Swift, Objective-C)
+• Android (Kotlin, Java)
+• Cross-platform: Flutter, React Native
+
+**App Types**:
+• Consumer Apps: Social, Fitness, E-commerce
+• Enterprise Apps: CRM, Inventory, HR
+• Hybrid Solutions: PWA + Native
+
+**Development Timeline**:
+• MVP: 2-4 months
+• Full App: 4-8 months
+• Maintenance: Ongoing support
+
+**Key Questions**:
+• "iOS and Android both?" → Yes, native or cross-platform
+• "App Store publishing?" → Complete deployment included
+• "Push notifications?" → Firebase, OneSignal integration
+
+💰 Need pricing? Click "Get Quote" button!`;
+  }
+  
+  // UI/UX Design
+  if (msg.includes("ui") || msg.includes("ux") || msg.includes("design") || msg.includes("figma") || msg.includes("prototype")) {
+    return `🎨 **UI/UX Design Excellence**
+
+**Our Design Process**:
+1. Research & Wireframing
+2. Visual Design (Figma, Adobe XD)
+3. Prototyping & Testing
+4. Handoff to Development
+
+**Services Offered**:
+• Complete UI/UX Redesign
+• Design Systems & Style Guides
+• Mobile & Web Interface Design
+• User Research & Testing
+• Accessibility (WCAG) Compliance
+
+**Pricing Guide**:
+• Website Design: $2K-$10K
+• Mobile App Design: $5K-$20K
+• Design Audit: $1K-$3K
+
+**Frequently Asked**:
+• "How many revisions?" → Unlimited until satisfaction
+• "Source files included?" → Yes, Figma/Adobe files
+• "Responsive design?" → Mobile-first approach
+
+✨ Click "Get Quote" for design consultation!`;
+  }
+  
+  // Cybersecurity
+  if (msg.includes("cyber") || msg.includes("security") || msg.includes("hacking") || msg.includes("penetration") || msg.includes("firewall")) {
+    return `🔒 **Cybersecurity Solutions**
+
+**Our Security Services**:
+• Penetration Testing & Ethical Hacking
+• Vulnerability Assessment
+• Security Audits & Compliance
+• Web Application Firewall (WAF)
+• Incident Response Planning
+• Employee Security Training
+
+**Protection For**:
+• E-commerce Platforms
+• Financial Applications
+• Healthcare Systems
+• Enterprise Networks
+
+**Compliance**:
+• GDPR, HIPAA, PCI-DSS
+• ISO 27001 Certification
+• Regular Security Updates
+
+**Common Concerns**:
+• "How secure is my site?" → We perform comprehensive audits
+• "What about data breaches?" → 24/7 monitoring available
+• "SSL certificates?" → Installation & management included
+
+🛡️ Click "Book Call" for free security assessment!`;
+  }
+  
+  // Cloud solutions
+  if (msg.includes("cloud") || msg.includes("aws") || msg.includes("azure") || msg.includes("google cloud") || msg.includes("hosting")) {
+    return `☁️ **Cloud Solutions & DevOps**
+
+**Cloud Platforms**:
+• AWS (EC2, Lambda, S3)
+• Microsoft Azure
+• Google Cloud Platform
+• DigitalOcean, Heroku
+
+**Services**:
+• Cloud Migration Strategy
+• Infrastructure as Code (Terraform)
+• CI/CD Pipeline Setup
+• Containerization (Docker, Kubernetes)
+• Serverless Architecture
+• Cost Optimization
+
+**DevOps Practices**:
+• Automated Testing & Deployment
+• Monitoring & Logging (Prometheus, Grafana)
+• Disaster Recovery Planning
+
+**Migration Questions**:
+• "Safe to move to cloud?" → Zero-downtime migration
+• "Cost savings?" → 30-50% typical reduction
+• "Data security?" → Enterprise-grade encryption
+
+🚀 Click "Get Quote" for cloud assessment!`;
+  }
+  
+  // AI/ML
+  if (msg.includes("ai") || msg.includes("artificial") || msg.includes("machine learning") || msg.includes("chatbot") || msg.includes("ml")) {
+    return `🤖 **AI & Machine Learning Solutions**
+
+**AI Services**:
+• Custom Chatbots & Virtual Assistants
+• Predictive Analytics & Forecasting
+• Computer Vision (Image Recognition)
+• Natural Language Processing
+• Recommendation Engines
+• Automated Data Analysis
+
+**ML Models**:
+• Supervised Learning (Classification, Regression)
+• Unsupervised Learning (Clustering, Anomaly Detection)
+• Deep Learning (Neural Networks, CNN, RNN)
+
+**Use Cases**:
+• Customer Support Automation
+• Fraud Detection Systems
+• Personalized Marketing
+• Supply Chain Optimization
+• Healthcare Diagnostics
+
+**Technical Stack**:
+• TensorFlow, PyTorch, Scikit-learn
+• Python, R, Julia
+• Cloud AI Services (AWS SageMaker, Azure ML)
+
+**FAQs**:
+• "Need AI expertise?" → Our team has PhD-level ML engineers
+• "Data privacy?" → GDPR-compliant processing
+• "Integration with existing systems?" → Seamless API integration
+
+🧠 Click "Book Call" for AI consultation!`;
+  }
+  
+  // E-commerce
+  if (msg.includes("ecommerce") || msg.includes("shop") || msg.includes("store") || msg.includes("shopify") || msg.includes("woocommerce")) {
+    return `🛒 **E-commerce Solutions**
+
+**Platforms We Support**:
+• Shopify (Plus, Enterprise)
+• WooCommerce/WordPress
+• Magento/Adobe Commerce
+• BigCommerce
+• Custom Solutions
+
+**E-commerce Features**:
+• Payment Gateway Integration (Stripe, PayPal, Razorpay)
+• Inventory Management
+• Multi-vendor Marketplace
+• SEO & Performance Optimization
+• Mobile Commerce (PWA)
+• CRM Integration (HubSpot, Salesforce)
+
+**Store Setup Timeline**:
+• Basic Store: 2-4 weeks
+• Advanced Store: 6-12 weeks
+• Enterprise: 3-6 months
+
+**Success Stories**:
+• 500% Revenue Growth
+• 99.9% Uptime Guarantee
+• PCI-DSS Compliance
+
+**Popular Questions**:
+• "Payment gateways?" → 50+ gateways supported
+• "Shipping integration?" → FedEx, DHL, India Post
+• "SEO optimization?" → Built-in SEO best practices
+
+💳 Click "Get Quote" for store development!`;
+  }
+  
+  // Pricing and budget
+  if (msg.includes("price") || msg.includes("cost") || msg.includes("budget") || msg.includes("expensive") || msg.includes("cheap")) {
+    handleSend(null, "Get Quote");
+    return `💰 **Transparent Pricing Guide**
+
+**Service Ranges**:
+• Static Website: $1,000 - $5,000
+• Dynamic Website: $5,000 - $15,000
+• Web Application: $15,000 - $50,000+
+• Mobile App (iOS/Android): $20,000 - $80,000
+• UI/UX Design: $2,000 - $15,000
+• Cybersecurity Audit: $3,000 - $20,000
+• Cloud Migration: $10,000 - $50,000+
+
+**What Affects Cost**:
+• Team Size & Complexity
+• Design Requirements
+• Integration Needs
+• Timeline Constraints
+• Ongoing Maintenance
+
+**No Hidden Fees**:
+• Fixed-price contracts
+• Milestone payments
+• Post-launch support included
+
+📝 **Quote Form Opening Below** - Get accurate pricing for your project!`;
+  }
+  
+  // Timeline questions
+  if (msg.includes("time") || msg.includes("timeline") || msg.includes("duration") || msg.includes("how long")) {
+    return `⏱️ **Project Timelines**
+
+**Typical Durations**:
+• Website Redesign: 2-6 weeks
+• Custom Web App: 3-6 months
+• Mobile App MVP: 2-4 months
+• Full Mobile App: 4-8 months
+• UI/UX Design: 2-8 weeks
+• Cybersecurity Audit: 1-4 weeks
+
+**Factors Affecting Timeline**:
+• Project Scope & Features
+• Design Iterations Needed
+• Third-party Integrations
+• Client Feedback Speed
+• Testing & QA Phases
+
+**Our Process**:
+1. Discovery & Planning (1-2 weeks)
+2. Design & Prototyping (2-4 weeks)
+3. Development Sprints (Agile)
+4. Testing & Deployment
+5. Training & Go-live
+
+⚡ **Need faster delivery?** Click "Book Call" to discuss expedited options!`;
+  }
+  
+  // Support and maintenance
+  if (msg.includes("support") || msg.includes("maintenance") || msg.includes("update") || msg.includes("bug") || msg.includes("hosting")) {
+    return `🛠️ **Support & Maintenance**
+
+**Maintenance Packages**:
+• **Basic**: $99/month - Updates, Backups, Uptime Monitoring
+• **Standard**: $299/month - Security, Performance, Minor Updates
+• **Premium**: $599+/month - 24/7 Support, Feature Updates, SEO
+
+**What We Cover**:
+• Security Patches & Updates
+• Performance Optimization
+• Backup & Disaster Recovery
+• Uptime Monitoring (99.9% SLA)
+• Bug Fixes & Troubleshooting
+• Hosting Management
+
+**Hosting Options**:
+• Shared Hosting: $10-50/month
+• VPS/Cloud: $50-500/month
+• Dedicated Servers: Custom pricing
+• AWS/Azure Managed: Enterprise
+
+**Emergency Support**:
+• 24/7 Critical Issue Response
+• 4-hour SLA for Priority Issues
+• Remote Access for Quick Fixes
+
+🔧 **Existing project issues?** Click "Book Call" for immediate support consultation!`;
+  }
+  
+  // Hiring and careers
+  if (msg.includes("hire") || msg.includes("job") || msg.includes("career") || msg.includes("developer") || msg.includes("team")) {
+    return `💼 **Hiring & Careers at Uxinity**
+
+**We Are Hiring**:
+• Frontend Developers (React, Vue)
+• Backend Developers (Node, Python)
+• Full Stack Engineers
+• UI/UX Designers
+• DevOps Engineers
+• Cybersecurity Specialists
+• AI/ML Engineers
+
+**What We Offer**:
+• Competitive Salaries
+• Remote/Hybrid Work
+• Professional Growth
+• Health Insurance
+• Paid Time Off
+• Latest Tech Stack
+
+**Client Hiring**:
+• Dedicated Development Teams
+• Freelance Developers
+• Project-based Hiring
+• Staff Augmentation
+
+**For Clients**:
+• "Need developers for my team?" → Staff augmentation available
+• "Long-term partnership?" → Dedicated teams with fixed rates
+• "Quality assurance?" → All developers vetted & experienced
+
+🚀 **Looking to join us?** Email resumes to careers@uxinity.com`;
+  }
+  
+  // Technical questions
+  if (msg.includes("technology") || msg.includes("stack") || msg.includes("framework") || msg.includes("api") || msg.includes("database")) {
+    return `⚙️ **Our Technology Stack**
+
+**Frontend**:
+• React, Next.js, Vue.js, Angular
+• TypeScript, JavaScript (ES6+)
+• Tailwind CSS, Material-UI
+• Progressive Web Apps (PWA)
+
+**Backend**:
+• Node.js, Express, NestJS
+• Python (Django, Flask, FastAPI)
+• PHP (Laravel, Symfony)
+• Ruby on Rails
+• Java Spring Boot
+
+**Databases**:
+• PostgreSQL, MySQL, MongoDB
+• Redis (Caching)
+• Elasticsearch (Search)
+
+**DevOps & Cloud**:
+• Docker, Kubernetes
+• AWS, Azure, Google Cloud
+• CI/CD (GitHub Actions, Jenkins)
+• Terraform, Ansible
+
+**APIs & Integration**:
+• RESTful APIs, GraphQL
+• Third-party Integrations (Stripe, Twilio, etc.)
+• Webhooks & Real-time (Socket.io)
+
+**Quality Assurance**:
+• Unit Testing (Jest, Mocha)
+• E2E Testing (Cypress, Playwright)
+• Performance Testing (Lighthouse)
+
+🔧 **Specific tech questions?** Click "Book Call" for technical consultation!`;
+  }
+  
+  // Process questions
+  if (msg.includes("process") || msg.includes("how") || msg.includes("workflow") || msg.includes("methodology")) {
+    return `📋 **Our Development Process**
+
+**Agile Methodology**:
+• 2-week Sprints
+• Daily Standups
+• Sprint Reviews & Retrospectives
+• Continuous Integration/Deployment
+
+**Project Phases**:
+1. **Discovery** (1-2 weeks)
+   - Requirements Gathering
+   - Technical Architecture
+   - Project Roadmap
+   
+2. **Design** (2-4 weeks)
+   - Wireframes & Mockups
+   - UI/UX Design
+   - Client Approvals
+   
+3. **Development** (Core Phase)
+   - Frontend & Backend
+   - API Development
+   - Integration Testing
+   
+4. **Testing & QA**
+   - Unit, Integration, E2E Tests
+   - Security & Performance Testing
+   - User Acceptance Testing
+   
+5. **Deployment**
+   - Staging Environment
+   - Production Deployment
+   - Monitoring Setup
+   
+6. **Maintenance & Support**
+   - Bug Fixes
+   - Feature Updates
+   - Performance Monitoring
+
+**Client Involvement**:
+• Weekly Progress Updates
+• Access to Project Management Tools
+• Transparent Communication
+• Milestone Deliverables
+
+⚡ **Want to see our process in action?** Click "Book Call" for detailed walkthrough!`;
+  }
+  
+  // Default comprehensive response
+  return `🤖 **Uxinity IT Assistant** - Your Tech Partner
+
+**🚀 Top Services**:
+• 🌐 Web & Mobile Development
+• 🎨 UI/UX Design
+• 🔒 Cybersecurity
+• ☁️ Cloud & DevOps
+• 🤖 AI/ML Solutions
+• 🛒 E-commerce
+
+**💬 Ask Me About**:
+• Project pricing & timelines
+• Technology recommendations
+• Development processes
+• Support & maintenance
+• Hiring developers
+• Specific service details
+
+**🔥 Quick Actions**:
+• 💰 "Get Quote" for pricing
+• 📞 "Book Call" for consultation
+• 💬 Type your question below
+
+**📞 Direct Contact**:
+• +91 9446068542
+• Uxinityofficial@gmail.com
+
+**Pro Tip**: Try asking "web development process" or "mobile app pricing" for detailed answers!`;
+};
 
   return (
     <>
