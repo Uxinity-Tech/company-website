@@ -496,9 +496,11 @@ export default function AboutPage() {
                 <h3 className="text-2xl font-bold mb-4">Ready to Ship?</h3>
                 <p className="text-white/90 mb-6">We're taking 3 new clients this month. Spots filling fast.</p>
                 <div className="flex flex-col sm:flex-row gap-4">
+                    <a href="/consultation">
                   <button className="flex-1 bg-white text-black font-semibold py-3 px-6 rounded-lg hover:bg-gray-100 transition-colors">
                     Start Project
                   </button>
+                    </a>
                   <button className="flex items-center gap-2 text-white/80 hover:text-white font-medium border border-white/30 py-3 px-6 rounded-lg">
                     See Our Work
                     <ArrowRight className="h-4 w-4" />

@@ -534,7 +534,8 @@ export default function ProjectsPage() {
               We've successfully delivered our first projects. Let's build yours next.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button 
+              <a href="/consultation">
+              <motion.button
                 className="button-shimmer bg-white text-black font-semibold py-4 px-8 rounded-lg project-card"
                 whileHover={{ 
                   scale: 1.05, 
@@ -545,6 +546,7 @@ export default function ProjectsPage() {
               >
                 Start Project
               </motion.button>
+              </a>
               <motion.button 
                 className="button-shimmer border border-white/30 text-white py-4 px-8 rounded-lg project-card"
                 whileHover={{ 
