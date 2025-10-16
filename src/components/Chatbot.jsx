@@ -57,8 +57,8 @@ const Chatbot = () => {
       
       setTimeout(() => {
         const reply = formType === "quote" 
-          ? `💰 **Get Quote Form Opened!**\n\nFill the form below for detailed pricing. Response within 24 hours!\n\n📞 +91-9876543210 | 📧 Uxinityofficial@gmail.com`
-          : `📞 **Consultation Form Opened!**\n\nSchedule your free 30-min expert call. We'll contact you within 2 hours!\n\n📞 Direct: +91-9876543210`;
+          ? `💰 **Get Quote Form Opened!**\n\nFill the form below for detailed pricing. Response within 24 hours!\n\n📞 +91 9446068542 | 📧 Uxinityofficial@gmail.com`
+          : `📞 **Consultation Form Opened!**\n\nSchedule your free 30-min expert call. We'll contact you within 2 hours!\n\n📞 Direct: +91 9446068542`;
         setMessages((prev) => [...prev, { from: "bot", text: reply }]);
       }, 800);
       return;
@@ -645,7 +645,7 @@ ${CONTACT_INFO}`;
               
               <div className="mt-4 pt-3 border-t border-gray-600">
                 <p className="text-xs text-gray-400 flex items-center gap-2">
-                  📞 <span className="font-medium">+91-9876543210</span>
+                  📞 <span className="font-medium">+91 9446068542</span>
                 </p>
                 <p className="text-xs text-gray-500">
                   {formData.formType === "quote" ? "Quote within 24 hours" : "Call within 2 hours"}

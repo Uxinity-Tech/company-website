@@ -63,14 +63,14 @@ export default function ToggleQuickMenu() {
           className={`relative mx-auto overflow-hidden border border-black bg-white px-1 transition-all duration-300 ${
             menuOpen ? "w-40 rounded-xl pb-1" : "w-10 rounded-full"
           }`}
-          onMouseEnter={() => setMenuOpen(true)}
-          onMouseLeave={() => setMenuOpen(false)}
+          onMouseEnter={() => setMenuOpen(true)} // Open on hover
+          onMouseLeave={() => setMenuOpen(false)} // Close when leaving
         >
           {/* Toggle Button */}
           <button
             type="button"
             aria-label="Toggle quick menu"
-            onClick={() => setMenuOpen((v) => !v)}
+            onClick={() => setMenuOpen((v) => !v)} // Toggle on click
             className="absolute left-1/2 top-2 z-10 grid h-5 w-5 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-black text-white transition-all duration-300"
           >
             <motion.span
@@ -84,7 +84,9 @@ export default function ToggleQuickMenu() {
 
           {/* Menu Items */}
           <motion.ul
-            className={`transition-all duration-500 ${menuOpen ? "mt-8 opacity-100" : "mt-7 opacity-0"}`}
+            className={`transition-all duration-500 ${
+              menuOpen ? "mt-8 opacity-100" : "mt-7 opacity-0"
+            }`}
             initial={false}
             animate={menuOpen ? "open" : "closed"}
             variants={menuListVariants}
@@ -93,18 +95,23 @@ export default function ToggleQuickMenu() {
               { label: "Home", path: "/" },
               { label: "About Us", path: "/about" },
               { label: "What We Do", path: "/expertise" },
+              { label: "Our Work", path: "/service" },
               { label: "Projects", path: "/projects" },
               { label: "Contact", path: "/contact" },
             ].map((item) => (
-              <motion.li key={item.path} className="mb-1 overflow-hidden" variants={menuItemVariants}>
-                <button
-                  onClick={() => go(item.path)}
-                  className={`block w-full rounded-md bg-neutral-100 px-2 py-0 text-xs text-black hover:bg-black hover:text-white transition-colors ${
+              <motion.li
+                key={item.path}
+                className="mb-1 overflow-hidden"
+                variants={menuItemVariants}
+              >
+                <a
+                  href={item.path}
+                  className={`block w-full text-center rounded-md bg-neutral-100 px-2 py-0 text-xs text-black hover:bg-black hover:text-white transition-colors ${
                     menuOpen ? "h-6" : "h-0 pointer-events-none"
                   }`}
                 >
                   {item.label}
-                </button>
+                </a>
               </motion.li>
             ))}
           </motion.ul>

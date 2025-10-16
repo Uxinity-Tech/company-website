@@ -242,18 +242,19 @@ export default function ThemedBanner() {
           </motion.div>
 
           {/* Get Consultation Button */}
-          <motion.button
-            className="consultation-btn mt-12"
-            variants={buttonVariants}
-            initial="hidden"
-            animate="visible"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={handleConsultationClick}
-            aria-label="Get a free consultation"
-          >
-            Get Consultation
-          </motion.button>
+          <motion.a
+  href="/consultation" // 🔁 change to your link (e.g., "#consultation")
+  className="consultation-btn mt-12 inline-block"
+  variants={buttonVariants}
+  initial="hidden"
+  animate="visible"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.98 }}
+  aria-label="Get a free consultation"
+>
+  Get Consultation
+</motion.a>
+
         </motion.div>
       </div>
     </section>
