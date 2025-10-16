@@ -293,7 +293,7 @@ const Contact = () => {
                 <div className="text-sm text-gray-600">Response Time</div>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-xl">
-                <div className="text-2xl font-bold text-black">100+</div>
+                <div className="text-2xl font-bold text-black">5+</div>
                 <div className="text-sm text-gray-600">Projects</div>
               </div>
             </motion.div>

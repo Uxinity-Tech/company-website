@@ -377,10 +377,10 @@ export default function Landing() {
                   <p className="text-sm text-gray-600 mb-3">Social</p>
                   <div className="flex flex-wrap gap-3">
                     {[
-                      { href: "https://www.linkedin.com", label: "LinkedIn" },
-                      { href: "https://x.com", label: "X" },
-                      { href: "https://www.instagram.com", label: "Instagram" },
-                      { href: "https://github.com", label: "GitHub" },
+                      { href: "https://www.facebook.com/share/1ABSH2corU/", label: "Facebook" },
+                      { href: "https://wa.me/919446068542", label: "WhatsApp" },
+                      { href: "https://www.instagram.com/uxin_ity?igsh=MW9jYTRqd3NzMmZudg==", label: "Instagram" },
+                      { href: "mailto:Uxinityofficial@gmail.com", label: "Email" },
                     ].map((social, idx) => (
                       <motion.a
                         key={idx}
