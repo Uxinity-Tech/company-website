@@ -9,14 +9,13 @@ import {
   Layout, 
   TrendingUp, 
   Shield,
-  Eye,
   Link2,
   Monitor,
   Smartphone
 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ToggleQuickMenu from "../components/ToggleQuickMenu";
-
+import ecart from "../assets/images/ecart.jpg";
 export default function ProjectsPage() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -32,13 +31,28 @@ export default function ProjectsPage() {
   }, []);
 
   const projects = [
-    // Small completed project - first client work
+    {
+      title: "Mini E-Commerce Website",
+      category: "Web Application",
+      description: "A simple and responsive e-commerce website for small businesses featuring product listings, cart functionality, and user-friendly checkout flow.",
+      tech: ["React", "Tailwind", "Node.js", "MongoDB"],
+      live: "https://ecartss.netlify.app/",
+      caseStudy: "/case-studies/mini-ecommerce",
+      gradient: "from-pink-500 to-rose-600",
+      stats: {
+        features: "8 core",
+        users: "100+ shoppers",
+        uptime: "99.9%",
+        completed: "Launched Q3 2025"
+      },
+      image: ecart
+    },
     {
       title: "Local Business Dashboard",
       category: "Web Application",
       description: "Custom admin dashboard for a local service business with appointment booking and client management.",
       tech: ["React", "Node.js", "MongoDB", "Tailwind"],
-      live: "",
+      live: "https://business-dashboard-demo.vercel.app/", // Placeholder, replace with real URL
       caseStudy: "/case-studies/business-dashboard",
       gradient: "from-blue-500 to-purple-600",
       stats: { 
@@ -49,30 +63,12 @@ export default function ProjectsPage() {
       },
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop"
     },
-    // Small UI/UX project
-    {
-      title: "E-commerce Landing Pages",
-      category: "UI/UX Design",
-      description: "Responsive landing pages and checkout flow redesign for a small online store.",
-      tech: ["Figma", "Webflow", "Tailwind CSS"],
-      live: "",
-      caseStudy: "/case-studies/ecommerce-landing",
-      gradient: "from-green-500 to-emerald-600",
-      stats: { 
-        pages: "5 designed", 
-        conversions: "+25% A/B test", 
-        devices: "Mobile-first", 
-        completed: "Delivered Q1 2025" 
-      },
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1600&auto=format&fit=crop"
-    },
-    // Security audit project
     {
       title: "Website Security Audit",
       category: "Cyber Security",
       description: "Comprehensive security assessment and vulnerability remediation for a small business website.",
       tech: ["OWASP", "SSL Labs", "Nmap", "Burp Suite"],
-      live: "",
+      live: "https://security-audit-demo.example.com/", // Placeholder, replace with real URL
       caseStudy: "/case-studies/security-audit",
       gradient: "from-red-500 to-orange-600",
       stats: { 
@@ -83,13 +79,12 @@ export default function ProjectsPage() {
       },
       image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600&auto=format&fit=crop"
     },
-    // Digital marketing site
     {
       title: "Consulting Firm Website",
       category: "Digital Experience",
       description: "Modern website with lead capture forms, blog system, and SEO optimization for a consulting startup.",
       tech: ["Next.js", "Contentful", "Vercel", "Google Analytics"],
-      live: "",
+      live: "https://consulting-website-demo.vercel.app/", // Placeholder, replace with real URL
       caseStudy: "/case-studies/consulting-website",
       gradient: "from-purple-500 to-pink-600",
       stats: { 
@@ -109,7 +104,6 @@ export default function ProjectsPage() {
 
   const yText = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -138,11 +132,8 @@ export default function ProjectsPage() {
   };
 
   const handleImgError = (index) => {
-    const newImages = [...projects.map(p => p.image || '')];
-    newImages[index] = "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80";
-    // Update projects with fallback image
     const updatedProjects = [...projects];
-    updatedProjects[index].image = newImages[index];
+    updatedProjects[index].image = "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80";
   };
 
   return (
@@ -268,6 +259,9 @@ export default function ProjectsPage() {
           border: 1px solid rgba(22,163,74,0.2);
           z-index: 10;
         }
+        .disabled-button {
+          text-black/30 cursor-not-allowed;
+        }
       `}</style>
 
       {/* Hero Section */}
@@ -391,15 +385,33 @@ export default function ProjectsPage() {
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-black/10">
+                  <div className="flex items-center justify-between pt-4 border-t border-black/10 gap-4">
                     <motion.button
-                      className="button-shimmer flex items-center gap-2 text-black/70 hover:text-black font-medium text-sm tech-tag project-card"
-                      whileHover={{ scale: 1.05, x: 3 }}
-                      onClick={() => navigate(project.caseStudy)}
+                      className={`button-shimmer flex items-center gap-2 font-medium text-sm tech-tag project-card ${
+                        project.caseStudy ? "text-black/70 hover:text-black" : "text-black/30 cursor-not-allowed"
+                      }`}
+                      whileHover={project.caseStudy ? { scale: 1.05, x: 3 } : {}}
+                      onClick={project.caseStudy ? () => navigate(project.caseStudy) : undefined}
+                      disabled={!project.caseStudy}
+                      aria-label={`View case study for ${project.title}`}
                     >
                       <BarChart3 className="h-3 w-3" />
                       Case Study
                     </motion.button>
+                    
+                    {project.live && (
+                      <motion.a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button-shimmer flex items-center gap-2 text-black/70 hover:text-black font-medium text-sm tech-tag project-card"
+                        whileHover={{ scale: 1.05, x: 3 }}
+                        aria-label={`View live demo of ${project.title}`}
+                      >
+                        <Link2 className="h-3 w-3" />
+                        Live Demo
+                      </motion.a>
+                    )}
                     
                     <motion.div
                       className="w-8 h-8 bg-black/5 rounded-lg flex items-center justify-center project-card"
@@ -534,7 +546,6 @@ export default function ProjectsPage() {
               We've successfully delivered our first projects. Let's build yours next.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/consultation">
               <motion.button
                 className="button-shimmer bg-white text-black font-semibold py-4 px-8 rounded-lg project-card"
                 whileHover={{ 
@@ -543,10 +554,10 @@ export default function ProjectsPage() {
                 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => navigate('/contact')}
+                aria-label="Start a new project"
               >
                 Start Project
               </motion.button>
-              </a>
               <motion.button 
                 className="button-shimmer border border-white/30 text-white py-4 px-8 rounded-lg project-card"
                 whileHover={{ 
@@ -554,6 +565,8 @@ export default function ProjectsPage() {
                   backgroundColor: "rgba(255,255,255,0.1)"
                 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={() => navigate('/case-studies')}
+                aria-label="View all case studies"
               >
                 View Case Studies
               </motion.button>
