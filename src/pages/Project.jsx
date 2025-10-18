@@ -16,6 +16,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import ToggleQuickMenu from "../components/ToggleQuickMenu";
 import ecart from "../assets/images/ecart.jpg";
+
 export default function ProjectsPage() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -45,14 +46,15 @@ export default function ProjectsPage() {
         uptime: "99.9%",
         completed: "Launched Q3 2025"
       },
-      image: ecart
+      image: ecart,
+      status: "completed" // Added status field
     },
     {
       title: "Local Business Dashboard",
       category: "Web Application",
       description: "Custom admin dashboard for a local service business with appointment booking and client management.",
       tech: ["React", "Node.js", "MongoDB", "Tailwind"],
-      live: "https://business-dashboard-demo.vercel.app/", // Placeholder, replace with real URL
+      live: "https://business-dashboard-demo.vercel.app/",
       caseStudy: "/case-studies/business-dashboard",
       gradient: "from-blue-500 to-purple-600",
       stats: { 
@@ -61,14 +63,15 @@ export default function ProjectsPage() {
         uptime: "99.8%", 
         completed: "Delivered Q1 2025" 
       },
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop",
+      status: "progressing" // Added status field
     },
     {
       title: "Website Security Audit",
       category: "Cyber Security",
       description: "Comprehensive security assessment and vulnerability remediation for a small business website.",
       tech: ["OWASP", "SSL Labs", "Nmap", "Burp Suite"],
-      live: "https://security-audit-demo.example.com/", // Placeholder, replace with real URL
+      live: "https://security-audit-demo.example.com/",
       caseStudy: "/case-studies/security-audit",
       gradient: "from-red-500 to-orange-600",
       stats: { 
@@ -77,14 +80,15 @@ export default function ProjectsPage() {
         report: "45-page deliverable", 
         completed: "Delivered Q1 2025" 
       },
-      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600&auto=format&fit=crop",
+      status: "progressing" // Added status field
     },
     {
       title: "Consulting Firm Website",
       category: "Digital Experience",
       description: "Modern website with lead capture forms, blog system, and SEO optimization for a consulting startup.",
       tech: ["Next.js", "Contentful", "Vercel", "Google Analytics"],
-      live: "https://consulting-website-demo.vercel.app/", // Placeholder, replace with real URL
+      live: "https://consulting-website-demo.vercel.app/",
       caseStudy: "/case-studies/consulting-website",
       gradient: "from-purple-500 to-pink-600",
       stats: { 
@@ -93,7 +97,8 @@ export default function ProjectsPage() {
         leads: "15 qualified", 
         completed: "Delivered Q1 2025" 
       },
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop",
+      status: "progressing" // Added status field
     }
   ];
 
@@ -259,6 +264,19 @@ export default function ProjectsPage() {
           border: 1px solid rgba(22,163,74,0.2);
           z-index: 10;
         }
+        .progressing-badge {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          background: rgba(59,130,246,0.1);
+          color: red;
+          padding: 0.25rem 0.75rem;
+          border-radius: 9999px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          border: 1px solid rgba(59,130,246,0.2);
+          z-index: 10;
+        }
         .disabled-button {
           text-black/30 cursor-not-allowed;
         }
@@ -318,7 +336,9 @@ export default function ProjectsPage() {
                 variants={cardHoverVariants}
                 whileHover="hover"
               >
-                <div className="completed-badge">Completed</div>
+                <div className={project.status === "completed" ? "completed-badge" : "progressing-badge"}>
+                  {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
+                </div>
                 
                 <div className="relative aspect-[16/9] overflow-hidden group">
                   <motion.img

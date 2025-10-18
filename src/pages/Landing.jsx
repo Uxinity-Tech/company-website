@@ -53,71 +53,75 @@ export default function Landing() {
   const projectsRef = useRef(null);
 
   const projects = [
-    {
-      title: "Mini E-Commerce Website",
-      category: "Web Application",
-      description: "A simple and responsive e-commerce website for small businesses featuring product listings, cart functionality, and user-friendly checkout flow.",
-      tech: ["React", "Tailwind", "Node.js", "MongoDB"],
-      live: "https://ecartsz.netlify.app/",
-      caseStudy: "/case-studies/mini-ecommerce",
-      gradient: "from-pink-500 to-rose-600",
-      stats: {
-        features: "8 core",
-        users: "100+ shoppers",
-        uptime: "99.9%",
-        completed: "Launched Q3 2025"
-      },
-      image: ecart
-    },
-    {
-      title: "Local Business Dashboard",
-      category: "Web Application",
-      description: "Custom admin dashboard for a local service business with appointment booking and client management.",
-      tech: ["React", "Node.js", "MongoDB", "Tailwind"],
-      live: "https://business-dashboard-demo.vercel.app/",
-      caseStudy: "/case-studies/business-dashboard",
-      gradient: "from-blue-500 to-purple-600",
-      stats: { 
-        features: "12 core", 
-        users: "50+ active", 
-        uptime: "99.8%", 
-        completed: "Delivered Q1 2025" 
-      },
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop"
-    },
-    {
-      title: "Website Security Audit",
-      category: "Cyber Security",
-      description: "Comprehensive security assessment and vulnerability remediation for a small business website.",
-      tech: ["OWASP", "SSL Labs", "Nmap", "Burp Suite"],
-      live: "https://security-audit-demo.example.com/",
-      caseStudy: "/case-studies/security-audit",
-      gradient: "from-red-500 to-orange-600",
-      stats: { 
-        vulnerabilities: "18 fixed", 
-        score: "From C to A+", 
-        report: "45-page deliverable", 
-        completed: "Delivered Q1 2025" 
-      },
-      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600&auto=format&fit=crop"
-    },
-    {
-      title: "Consulting Firm Website",
-      category: "Digital Experience",
-      description: "Modern website with lead capture forms, blog system, and SEO optimization for a consulting startup.",
-      tech: ["Next.js", "Contentful", "Vercel", "Google Analytics"],
-      live: "https://consulting-website-demo.vercel.app/",
-      caseStudy: "/case-studies/consulting-website",
-      gradient: "from-purple-500 to-pink-600",
-      stats: { 
-        pages: "8 live", 
-        traffic: "200% growth", 
-        leads: "15 qualified", 
-        completed: "Delivered Q1 2025" 
-      },
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop"
-    }
-  ];
+     {
+       title: "Mini E-Commerce Website",
+       category: "Web Application",
+       description: "A simple and responsive e-commerce website for small businesses featuring product listings, cart functionality, and user-friendly checkout flow.",
+       tech: ["React", "Tailwind", "Node.js", "MongoDB"],
+       live: "https://ecartsz.netlify.app/",
+       caseStudy: "/case-studies/mini-ecommerce",
+       gradient: "from-pink-500 to-rose-600",
+       stats: {
+         features: "8 core",
+         users: "100+ shoppers",
+         uptime: "99.9%",
+         completed: "Launched Q3 2025"
+       },
+       image: ecart,
+       status: "completed" // Added status field
+     },
+     {
+       title: "Local Business Dashboard",
+       category: "Web Application",
+       description: "Custom admin dashboard for a local service business with appointment booking and client management.",
+       tech: ["React", "Node.js", "MongoDB", "Tailwind"],
+       live: "https://business-dashboard-demo.vercel.app/",
+       caseStudy: "/case-studies/business-dashboard",
+       gradient: "from-blue-500 to-purple-600",
+       stats: { 
+         features: "12 core", 
+         users: "50+ active", 
+         uptime: "99.8%", 
+         completed: "Delivered Q1 2025" 
+       },
+       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop",
+       status: "progressing" // Added status field
+     },
+     {
+       title: "Website Security Audit",
+       category: "Cyber Security",
+       description: "Comprehensive security assessment and vulnerability remediation for a small business website.",
+       tech: ["OWASP", "SSL Labs", "Nmap", "Burp Suite"],
+       live: "https://security-audit-demo.example.com/",
+       caseStudy: "/case-studies/security-audit",
+       gradient: "from-red-500 to-orange-600",
+       stats: { 
+         vulnerabilities: "18 fixed", 
+         score: "From C to A+", 
+         report: "45-page deliverable", 
+         completed: "Delivered Q1 2025" 
+       },
+       image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600&auto=format&fit=crop",
+       status: "progressing" // Added status field
+     },
+     {
+       title: "Consulting Firm Website",
+       category: "Digital Experience",
+       description: "Modern website with lead capture forms, blog system, and SEO optimization for a consulting startup.",
+       tech: ["Next.js", "Contentful", "Vercel", "Google Analytics"],
+       live: "https://consulting-website-demo.vercel.app/",
+       caseStudy: "/case-studies/consulting-website",
+       gradient: "from-purple-500 to-pink-600",
+       stats: { 
+         pages: "8 live", 
+         traffic: "200% growth", 
+         leads: "15 qualified", 
+         completed: "Delivered Q1 2025" 
+       },
+       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop",
+       status: "progressing" // Added status field
+     }
+   ];
 
   const { scrollYProgress } = useScroll({
     target: projectsRef,
@@ -515,6 +519,19 @@ export default function Landing() {
                 border: 1px solid rgba(22,163,74,0.2);
                 z-index: 10;
               }
+                 .progressing-badge {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          background: rgba(59,130,246,0.1);
+          color: red;
+          padding: 0.25rem 0.75rem;
+          border-radius: 9999px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          border: 1px solid rgba(59,130,246,0.2);
+          z-index: 10;
+        }
               .disabled-button {
                 text-black/30 cursor-not-allowed;
               }
@@ -528,125 +545,128 @@ export default function Landing() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              {projects.map((project, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="project-card bg-white rounded-2xl overflow-hidden shimmer relative"
-                  variants={cardHoverVariants}
-                  whileHover="hover"
-                >
-                  <div className="completed-badge">Completed</div>
+             {projects.map((project, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="project-card bg-white rounded-2xl overflow-hidden shimmer relative"
+                variants={cardHoverVariants}
+                whileHover="hover"
+              >
+                <div className={project.status === "completed" ? "completed-badge" : "progressing-badge"}>
+                  {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
+                </div>
+                
+                <div className="relative aspect-[16/9] overflow-hidden group">
+                  <motion.img
+                    src={project.image}
+                    alt={project.title}
+                    onError={() => handleImgError(index)}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                    initial={{ scale: 1.1 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                  />
                   
-                  <div className="relative aspect-[16/9] overflow-hidden group">
-                    <motion.img
-                      src={project.image}
-                      alt={project.title}
-                      onError={() => handleImgError(index)}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="lazy"
-                      initial={{ scale: 1.1 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.8 }}
-                    />
-                    
-                    <div className="image-overlay">
-                      <div className="text-white">
-                        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                        <div className="flex flex-wrap gap-2">
-                          {project.tech.map((tech, i) => (
-                            <span key={i} className="tech-tag text-white/90">
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
+                  <div className="image-overlay">
+                    <div className="text-white">
+                      <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech, i) => (
+                          <span key={i} className="tech-tag text-white/90">
+                            {tech}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>
+                </div>
+                
+                <div className="p-6 relative z-10">
+                  <motion.p 
+                    className="text-xs uppercase tracking-wide text-black/60 mb-2 project-card"
+                    whileHover={{ color: "#000" }}
+                  >
+                    {project.category}
+                  </motion.p>
                   
-                  <div className="p-6 relative z-10">
-                    <motion.p 
-                      className="text-xs uppercase tracking-wide text-black/60 mb-2 project-card"
-                      whileHover={{ color: "#000" }}
-                    >
-                      {project.category}
-                    </motion.p>
-                    
-                    <motion.h3 
-                      className="text-xl font-semibold text-black mb-3 project-card"
-                      whileHover={{ y: -1 }}
-                    >
-                      {project.title}
-                    </motion.h3>
-                    
-                    <motion.p 
-                      className="text-black/80 mb-4 leading-relaxed text-sm project-card"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      {project.description}
-                    </motion.p>
+                  <motion.h3 
+                    className="text-xl font-semibold text-black mb-3 project-card"
+                    whileHover={{ y: -1 }}
+                  >
+                    {project.title}
+                  </motion.h3>
+                  
+                  <motion.p 
+                    className="text-black/80 mb-4 leading-relaxed text-sm project-card"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    {project.description}
+                  </motion.p>
 
-                    <div className="stats-grid mb-4">
-                      {Object.entries(project.stats).map(([key, value]) => (
-                        <motion.div 
-                          key={key} 
-                          className="stat-item project-card"
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          <div className="font-bold text-black">{value}</div>
-                          <div className="text-black/60 uppercase tracking-wide text-xs">
-                            {key.replace(/([A-Z])/g, ' $1').trim()}
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center justify-between pt-4 border-t border-black/10 gap-4">
-                      {/* <motion.button
-                        className={`button-shimmer flex items-center gap-2 font-medium text-sm tech-tag project-card ${
-                          project.caseStudy ? "text-black/70 hover:text-black" : "text-black/30 cursor-not-allowed"
-                        }`}
-                        whileHover={project.caseStudy ? { scale: 1.05, x: 3 } : {}}
-                        onClick={project.caseStudy ? () => navigate(project.caseStudy) : undefined}
-                        disabled={!project.caseStudy}
-                        aria-label={`View case study for ${project.title}`}
+                  <div className="stats-grid mb-4">
+                    {Object.entries(project.stats).map(([key, value]) => (
+                      <motion.div 
+                        key={key} 
+                        className="stat-item project-card"
+                        whileHover={{ scale: 1.05 }}
                       >
-                        <BarChart3 className="h-3 w-3" />
-                        Case Study
-                      </motion.button> */}
-                      
-                      {project.live && (
-                        <motion.a
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="button-shimmer flex items-center gap-2 text-black/70 hover:text-black font-medium text-sm tech-tag project-card"
-                          whileHover={{ scale: 1.05, x: 3 }}
-                          aria-label={`View live demo of ${project.title}`}
-                        >
-                          <Link2 className="h-3 w-3" />
-                          Live Demo
-                        </motion.a>
-                      )}
-                      
-                      <motion.div
-                        className="w-8 h-8 bg-black/5 rounded-lg flex items-center justify-center project-card"
-                        whileHover={{ 
-                          scale: 1.2, 
-                          backgroundColor: "rgba(0,0,0,0.1)"
-                        }}
-                      >
-                        <ArrowRight className="h-4 w-4 text-black" />
+                        <div className="font-bold text-black">{value}</div>
+                        <div className="text-black/60 uppercase tracking-wide text-xs">
+                          {key.replace(/([A-Z])/g, ' $1').trim()}
+                        </div>
                       </motion.div>
-                    </div>
+                    ))}
                   </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
+
+                  <div className="flex items-center justify-between pt-4 border-t border-black/10 gap-4">
+                    <motion.button
+                      className={`button-shimmer flex items-center gap-2 font-medium text-sm tech-tag project-card ${
+                        project.caseStudy ? "text-black/70 hover:text-black" : "text-black/30 cursor-not-allowed"
+                      }`}
+                      whileHover={project.caseStudy ? { scale: 1.05, x: 3 } : {}}
+                      onClick={project.caseStudy ? () => navigate(project.caseStudy) : undefined}
+                      disabled={!project.caseStudy}
+                      aria-label={`View case study for ${project.title}`}
+                    >
+                      <BarChart3 className="h-3 w-3" />
+                      Case Study
+                    </motion.button>
+                    
+                    {project.live && (
+                      <motion.a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button-shimmer flex items-center gap-2 text-black/70 hover:text-black font-medium text-sm tech-tag project-card"
+                        whileHover={{ scale: 1.05, x: 3 }}
+                        aria-label={`View live demo of ${project.title}`}
+                      >
+                        <Link2 className="h-3 w-3" />
+                        Live Demo
+                      </motion.a>
+                    )}
+                    
+                    <motion.div
+                      className="w-8 h-8 bg-black/5 rounded-lg flex items-center justify-center project-card"
+                      whileHover={{ 
+                        scale: 1.2, 
+                        backgroundColor: "rgba(0,0,0,0.1)"
+                      }}
+                    >
+                      <ArrowRight className="h-4 w-4 text-black" />
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
 
         {/* Contact Section */}
         <section id="contact" className="py-24 px-6 bg-white">
