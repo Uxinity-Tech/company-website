@@ -36,7 +36,7 @@ export default function ProjectsPage() {
       category: "Web Application",
       description: "A simple and responsive e-commerce website for small businesses featuring product listings, cart functionality, and user-friendly checkout flow.",
       tech: ["React", "Tailwind", "Node.js", "MongoDB"],
-      live: "https://ecartss.netlify.app/",
+      live: "https://ecartsz.netlify.app/",
       caseStudy: "/case-studies/mini-ecommerce",
       gradient: "from-pink-500 to-rose-600",
       stats: {
