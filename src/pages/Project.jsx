@@ -406,7 +406,7 @@ export default function ProjectsPage() {
                   </div>
 
                   <div className="flex items-center justify-between pt-4 border-t border-black/10 gap-4">
-                    <motion.button
+                    {/* <motion.button
                       className={`button-shimmer flex items-center gap-2 font-medium text-sm tech-tag project-card ${
                         project.caseStudy ? "text-black/70 hover:text-black" : "text-black/30 cursor-not-allowed"
                       }`}
@@ -417,7 +417,7 @@ export default function ProjectsPage() {
                     >
                       <BarChart3 className="h-3 w-3" />
                       Case Study
-                    </motion.button>
+                    </motion.button> */}
                     
                     {project.live && (
                       <motion.a
@@ -440,7 +440,7 @@ export default function ProjectsPage() {
                         backgroundColor: "rgba(0,0,0,0.1)"
                       }}
                     >
-                      <ArrowRight className="h-4 w-4 text-black" />
+                      {/* <ArrowRight className="h-4 w-4 text-black" /> */}
                     </motion.div>
                   </div>
                 </div>
