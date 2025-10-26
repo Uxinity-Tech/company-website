@@ -16,7 +16,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import ToggleQuickMenu from "../components/ToggleQuickMenu";
 import ecart from "../assets/images/ecart.jpg";
-
+import Market from "../assets/images/Market.png";
+import Hotel from "../assets/images/Hotel.png";
 export default function ProjectsPage() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ export default function ProjectsPage() {
       category: "Web Application",
       description: "A simple and responsive e-commerce website for small businesses featuring product listings, cart functionality, and user-friendly checkout flow.",
       tech: ["React", "Tailwind", "Node.js", "MongoDB"],
-      live: "https://ecartsz.netlify.app/",
+      live: "https://ecartszz.netlify.app/",
       caseStudy: "/case-studies/mini-ecommerce",
       gradient: "from-pink-500 to-rose-600",
       stats: {
@@ -49,40 +50,46 @@ export default function ProjectsPage() {
       image: ecart,
       status: "completed" // Added status field
     },
-    {
-      title: "Local Business Dashboard",
-      category: "Web Application",
-      description: "Custom admin dashboard for a local service business with appointment booking and client management.",
-      tech: ["React", "Node.js", "MongoDB", "Tailwind"],
-      live: "https://business-dashboard-demo.vercel.app/",
-      caseStudy: "/case-studies/business-dashboard",
-      gradient: "from-blue-500 to-purple-600",
-      stats: { 
-        features: "12 core", 
-        users: "50+ active", 
-        uptime: "99.8%", 
-        completed: "Delivered Q1 2025" 
-      },
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop",
-      status: "progressing" // Added status field
-    },
-    {
-      title: "Website Security Audit",
-      category: "Cyber Security",
-      description: "Comprehensive security assessment and vulnerability remediation for a small business website.",
-      tech: ["OWASP", "SSL Labs", "Nmap", "Burp Suite"],
-      live: "https://security-audit-demo.example.com/",
-      caseStudy: "/case-studies/security-audit",
-      gradient: "from-red-500 to-orange-600",
-      stats: { 
-        vulnerabilities: "18 fixed", 
-        score: "From C to A+", 
-        report: "45-page deliverable", 
-        completed: "Delivered Q1 2025" 
-      },
-      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1600&auto=format&fit=crop",
-      status: "progressing" // Added status field
-    },
+  {
+  title: "Hypermarket Billing & Business Dashboard",
+  category: "Web Application",
+  description: "Custom admin dashboard for hypermarkets with billing, inventory management, and client tracking.",
+  tech: ["React", "Node.js", "MongoDB", "Tailwind"],
+  live: "https://projectszzss.netlify.app/",
+  caseStudy: "/case-studies/business-dashboard",
+  gradient: "from-blue-500 to-purple-600",
+  stats: { 
+    features: "15 core", 
+    users: "50+ active", 
+    uptime: "99.8%", 
+    completed: "Delivered Q3 2025" 
+  },
+  image: Market,
+  status: "completed"
+}
+,
+   {
+  title: "Hotel Booking System",
+  category: "Web Application",
+  description: "A full-featured hotel booking platform with room management, reservations, and payment integration.",
+  tech: ["React", "Node.js", "MongoDB", "Tailwind"],
+  live: "https://pprojectzz.netlify.app/",
+  caseStudy: "/case-studies/hotel-booking",
+  gradient: "from-indigo-500 to-pink-500",
+  stats: {
+    rooms: "120+ available",
+    bookings: "500+ completed",
+    uptime: "99.9%",
+    completed: "Delivered Q2 2025"
+  },
+  image: Hotel,
+  status: "completed",
+  credentials: {
+    username: "hotelAdmin",
+    password: "hotel123"
+  }
+}
+,
     {
       title: "Consulting Firm Website",
       category: "Digital Experience",
