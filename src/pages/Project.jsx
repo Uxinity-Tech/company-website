@@ -294,7 +294,7 @@ export default function ProjectsPage() {
       `}</style>
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative py-24 px-6">
+      <section ref={heroRef} className="relative py-24 px-6 ">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -330,7 +330,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section ref={projectsRef} className="py-20 px-6 bg-white">
+      <section ref={projectsRef} className="py-20 px-6 bg-white  mt-[-200px]">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-8"
