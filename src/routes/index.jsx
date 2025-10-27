@@ -10,7 +10,7 @@ import About from "../pages/About";
 import Service from "../pages/Service";   
 // import Brochure from "../pages/ServicesBrochure";
 import ConsultationForm from "../pages/ConsultationForm"; // New consultation form
-
+import ProjectDetail from "../pages/ProjectDetail"; // New project detail page
 
 export const router = createBrowserRouter([
   {
@@ -46,10 +46,9 @@ export const router = createBrowserRouter([
         path: "consultation",
         element: <ConsultationForm />,
       },
-      // {
-      //   path: "brochure",
-      //   element: <Brochure />,
-      // },
+        { path:"/projects/:id", 
+          element:<ProjectDetail /> ,
+        },
     ],
   },
 ]);

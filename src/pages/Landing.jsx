@@ -7,10 +7,11 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router";
 import ToggleQuickMenu from "../components/ToggleQuickMenu";
 import Chatbot from "../components/Chatbot";
-import { useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform,useAnimation } from "framer-motion";
 import ecart from "../assets/images/ecart.jpg";
 import Market from "../assets/images/Market.png";
 import Hotel from "../assets/images/Hotel.png";
+import { Link } from "react-router-dom";
 // Animation variants for staggered grid items
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -53,8 +54,9 @@ export default function Landing() {
   const navigate = useNavigate();
   const projectsRef = useRef(null);
 
- const projects = [
+  const projects = [
      {
+       id: "mini-ecommerce",
        title: "Mini E-Commerce Website",
        category: "Web Application",
        description: "A simple and responsive e-commerce website for small businesses featuring product listings, cart functionality, and user-friendly checkout flow.",
@@ -72,6 +74,7 @@ export default function Landing() {
        status: "completed" // Added status field
      },
    {
+   id: "hypermarket-dashboard",
    title: "Hypermarket Billing & Business Dashboard",
    category: "Web Application",
    description: "Custom admin dashboard for hypermarkets with billing, inventory management, and client tracking.",
@@ -90,6 +93,7 @@ export default function Landing() {
  }
  ,
     {
+  id: "hotel-booking",
    title: "Hotel Booking System",
    category: "Web Application",
    description: "A full-featured hotel booking platform with room management, reservations, and payment integration.",
@@ -264,7 +268,34 @@ export default function Landing() {
       return () => clearTimeout(timer);
     }
   }, [submitStatus, submitMessage]);
+const technologies = [
+  { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+  { name: "Tailwind", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
+  { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
+  { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
+  { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
+  { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
+  { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
+  { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+  { name: "Flutter", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" },
+  { name: "Dart", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" },
+];
+const [isPaused, setIsPaused] = useState(false);
+  const sliderRef = useRef(null);
+  const controls = useAnimation();
 
+  useEffect(() => {
+    if (!isPaused) {
+      controls.start({
+        x: '-50%',
+        transition: {
+          x: { ease: 'linear', duration: 20, repeat: Infinity, repeatType: 'loop' },
+        },
+      });
+    } else {
+      controls.stop();
+    }
+  }, [isPaused, controls]);
   // Chatbot component
   return (
     <>
@@ -299,9 +330,9 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <p className="tracking-[0.3em] text-sm md:text-base text-gray-600 font-roboto-mono uppercase">
-              About UXinity
-            </p>
+    <p className="tracking-[0.3em] text-sm md:text-base text-gray-600 font-roboto-mono uppercase">
+  About <span className="font-bold text-black">UXinity</span>
+</p>
             <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight font-roboto-condensed mt-3 bg-clip-text text-transparent bg-gradient-to-r from-black to-gray-700">
               Discover Our Passion for Crafting Exceptional Digital Experiences
             </h2>
@@ -371,39 +402,35 @@ export default function Landing() {
 
         {/* Projects Section */}
         <section id="projects" className="py-24 px-6 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              className="mb-10 text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              {/* <motion.div 
-                className="inline-flex items-center gap-2 px-4 py-2 bg-black/5 rounded-full border border-black/10 w-fit mx-auto mb-6 project-card"
-                whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0,0,0,0.1)" }}
-              >
-                <Sparkles className="h-4 w-4 text-black" />
-                <span className="text-sm font-medium text-black uppercase tracking-wide">First Projects</span>
-              </motion.div> */}
-              <motion.h2 
-                className="text-4xl md:text-6xl font-extrabold tracking-tight leading-none font-roboto-condensed"
-                style={{ y: yText }}
-                whileHover={{ y: -5 }}
-              >
-                Our Early Work
-              </motion.h2>
-              <motion.p 
-                className="text-lg md:text-xl text-gray-800 max-w-3xl mx-auto mt-4"
-                whileInView={{ opacity: 1 }}
-                initial={{ opacity: 0 }}
-                whileHover={{ color: "#000" }}
-              >
-                Small but meaningful projects from our first clients in Q1 2025. Building our portfolio, one startup at a time.
-              </motion.p>
-              <div className="mt-6 border-t border-gray-300" />
-            </motion.div>
-
+         <div className="max-w-7xl mx-auto">
+    <motion.div
+      className="mb-10 text-center"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
+      <p className="mb-1 tracking-wide text-xs md:text-sm text-gray-600 font-roboto-mono uppercase">
+        Our
+      </p>
+      <motion.h2
+        className="text-4xl md:text-6xl font-extrabold tracking-tight leading-none font-roboto-condensed"
+        whileHover={{ y: -5 }}
+        transition={{ duration: 0.2 }}
+      >
+        Early Work
+      </motion.h2>
+      <motion.p
+        className="text-lg md:text-xl text-gray-800 max-w-3xl mx-auto mt-4"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        whileHover={{ color: "#000" }}
+        transition={{ duration: 0.3 }}
+      >
+        Small but meaningful projects from our first clients in Q1 2025. Building our portfolio, one startup at a time.
+      </motion.p>
+      <div className="mt-6 border-t border-gray-300" />
+    </motion.div>
             <style>{`
               .project-card {
                 transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -656,15 +683,17 @@ export default function Landing() {
                       </motion.a>
                     )}
                     
-                    <motion.div
-                      className="w-8 h-8 bg-black/5 rounded-lg flex items-center justify-center project-card"
-                      whileHover={{ 
-                        scale: 1.2, 
-                        backgroundColor: "rgba(0,0,0,0.1)"
-                      }}
-                    >
-                      {/* <ArrowRight className="h-4 w-4 text-black" /> */}
-                    </motion.div>
+                               <Link to={`/projects/${project.id}`}>
+                       <motion.button
+  className="flex items-center gap-2 text-sm font-medium text-black/70 hover:text-black transition-colors cursor-pointer"
+  whileHover={{ x: 3 }}
+  whileTap={{ scale: 0.95 }}
+  onClick={() => navigate(`/project/${project.id}`)}
+>
+  <span>View Details</span>
+  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+</motion.button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -673,6 +702,54 @@ export default function Landing() {
         </div>
       </section>
 
+   <section className="relative bg-white py-16 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.05)_0%,_transparent_70%)] pointer-events-none" />
+      <p className="mb-0 text-center tracking-[0.25em] text-xs md:text-sm text-gray-600 font-roboto-mono uppercase">
+       Our
+      </p>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-gray-900 mb-12 tracking-tight">
+         TECHNOLOGIES
+        </h2>
+
+        <div
+          className="relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          ref={sliderRef}
+          role="region"
+          aria-label="Technology carousel"
+        >
+          <motion.div className="flex gap-6 sm:gap-8 lg:gap-12" animate={controls}>
+            {[...technologies, ...technologies].map((tech, index) => (
+              <div
+                key={`${tech.name}-${index}`}
+                className="flex-shrink-0 w-24 sm:w-28 lg:w-32 flex flex-col items-center justify-center text-center group"
+                role="listitem"
+                aria-label={`Technology: ${tech.name}`}
+              >
+                <div className="relative bg-gray-100 p-4 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:bg-gray-200">
+                  <img
+                    src={tech.logo}
+                    alt={tech.name}
+                    className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-contain filter group-hover:filter-none transition duration-300 transform group-hover:scale-110"
+                    loading="lazy"
+                    sizes="(min-width: 1024px) 80px, (min-width: 640px) 64px, 48px"
+                    srcSet={`${tech.logo}?w=48 48w, ${tech.logo}?w=64 64w, ${tech.logo}?w=80 80w`}
+                  />
+                  <p className="mt-3 text-xs sm:text-sm lg:text-base font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-300">
+                    {tech.name}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+
+          <div className="absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+        </div>
+      </div>
+    </section>
 
         {/* Contact Section */}
         <section id="contact" className="py-24 px-6 bg-white">

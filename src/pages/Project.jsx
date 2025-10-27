@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 import { 
   ArrowRight, 
   Code, 
@@ -34,6 +35,7 @@ export default function ProjectsPage() {
 
   const projects = [
     {
+      id: "mini-ecommerce",
       title: "Mini E-Commerce Website",
       category: "Web Application",
       description: "A simple and responsive e-commerce website for small businesses featuring product listings, cart functionality, and user-friendly checkout flow.",
@@ -51,6 +53,7 @@ export default function ProjectsPage() {
       status: "completed" // Added status field
     },
   {
+  id: "hypermarket-dashboard",
   title: "Hypermarket Billing & Business Dashboard",
   category: "Web Application",
   description: "Custom admin dashboard for hypermarkets with billing, inventory management, and client tracking.",
@@ -69,6 +72,7 @@ export default function ProjectsPage() {
 }
 ,
    {
+ id: "hotel-booking",
   title: "Hotel Booking System",
   category: "Web Application",
   description: "A full-featured hotel booking platform with room management, reservations, and payment integration.",
@@ -440,15 +444,19 @@ export default function ProjectsPage() {
                       </motion.a>
                     )}
                     
-                    <motion.div
-                      className="w-8 h-8 bg-black/5 rounded-lg flex items-center justify-center project-card"
-                      whileHover={{ 
-                        scale: 1.2, 
-                        backgroundColor: "rgba(0,0,0,0.1)"
-                      }}
-                    >
-                      {/* <ArrowRight className="h-4 w-4 text-black" /> */}
-                    </motion.div>
+                    <Link to={`/projects/${project.id}`}>
+    <motion.button
+  className="flex items-center gap-2 text-sm font-medium text-black/70 hover:text-black transition-colors cursor-pointer"
+  whileHover={{ x: 3 }}
+  whileTap={{ scale: 0.95 }}
+  onClick={() => navigate(`/project/${project.id}`)}
+>
+  <span>View Details</span>
+  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+</motion.button>
+
+  </Link>
+
                   </div>
                 </div>
               </motion.div>
@@ -585,7 +593,7 @@ export default function ProjectsPage() {
               >
                 Start Project
               </motion.button>
-              <motion.button 
+              {/* <motion.button 
                 className="button-shimmer border border-white/30 text-white py-4 px-8 rounded-lg project-card"
                 whileHover={{ 
                   scale: 1.05, 
@@ -596,7 +604,7 @@ export default function ProjectsPage() {
                 aria-label="View all case studies"
               >
                 View Case Studies
-              </motion.button>
+              </motion.button> */}
             </div>
           </motion.div>
         </div>

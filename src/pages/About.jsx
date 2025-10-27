@@ -501,10 +501,12 @@ export default function AboutPage() {
                     Start Project
                   </button>
                     </a>
+                    <a href="/projects">
                   <button className="flex items-center gap-2 text-white/80 hover:text-white font-medium border border-white/30 py-3 px-6 rounded-lg">
                     See Our Work
                     <ArrowRight className="h-4 w-4" />
                   </button>
+                    </a>
                 </div>
               </motion.div>
             </div>
