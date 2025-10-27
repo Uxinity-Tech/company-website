@@ -702,54 +702,75 @@ const [isPaused, setIsPaused] = useState(false);
         </div>
       </section>
 
-   <section className="relative bg-white py-16 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.05)_0%,_transparent_70%)] pointer-events-none" />
-      <p className="mb-0 text-center tracking-[0.25em] text-xs md:text-sm text-gray-600 font-roboto-mono uppercase">
-       Our
-      </p>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-gray-900 mb-12 tracking-tight">
-         TECHNOLOGIES
-        </h2>
+  <section className="relative bg-white py-16 overflow-hidden">
+  {/* Subtle radial background */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.05)_0%,_transparent_70%)] pointer-events-none" />
 
-        <div
-          className="relative"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          ref={sliderRef}
-          role="region"
-          aria-label="Technology carousel"
-        >
-          <motion.div className="flex gap-6 sm:gap-8 lg:gap-12" animate={controls}>
-            {[...technologies, ...technologies].map((tech, index) => (
-              <div
-                key={`${tech.name}-${index}`}
-                className="flex-shrink-0 w-24 sm:w-28 lg:w-32 flex flex-col items-center justify-center text-center group"
-                role="listitem"
-                aria-label={`Technology: ${tech.name}`}
-              >
-                <div className="relative bg-gray-100 p-4 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:bg-gray-200">
-                  <img
-                    src={tech.logo}
-                    alt={tech.name}
-                    className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-contain filter group-hover:filter-none transition duration-300 transform group-hover:scale-110"
-                    loading="lazy"
-                    sizes="(min-width: 1024px) 80px, (min-width: 640px) 64px, 48px"
-                    srcSet={`${tech.logo}?w=48 48w, ${tech.logo}?w=64 64w, ${tech.logo}?w=80 80w`}
-                  />
-                  <p className="mt-3 text-xs sm:text-sm lg:text-base font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-300">
-                    {tech.name}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </motion.div>
+  {/* Section content */}
+  <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    {/* Subheading */}
+    <p className="mb-2 tracking-[0.25em] text-xs md:text-sm text-gray-600 font-roboto-mono uppercase">
+      Our
+    </p>
 
-          <div className="absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-white to-transparent pointer-events-none" />
-        </div>
-      </div>
-    </section>
+    {/* Main heading */}
+    <motion.h2
+      className="text-4xl md:text-6xl font-extrabold tracking-tight leading-none font-roboto-condensed"
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.2 }}
+    >
+      TECHNOLOGIES
+    </motion.h2>
+
+    {/* Small description */}
+    <p className="mt-3 mb-10 text-gray-500 text-sm md:text-base max-w-2xl mx-auto font-light">
+      We use a modern stack of frameworks and tools to craft fast, reliable, and scalable digital experiences across web and mobile platforms.
+    </p>
+
+    {/* Technology carousel */}
+    <div
+      className="relative"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      ref={sliderRef}
+      role="region"
+      aria-label="Technology carousel"
+    >
+      <motion.div
+        className="flex gap-6 sm:gap-8 lg:gap-12"
+        animate={controls}
+      >
+        {[...technologies, ...technologies].map((tech, index) => (
+          <div
+            key={`${tech.name}-${index}`}
+            className="flex-shrink-0 w-24 sm:w-28 lg:w-32 flex flex-col items-center justify-center text-center group"
+            role="listitem"
+            aria-label={`Technology: ${tech.name}`}
+          >
+            <div className="relative bg-gray-100 p-4 rounded-xl shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:bg-gray-200">
+              <img
+                src={tech.logo}
+                alt={tech.name}
+                className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 object-contain filter group-hover:filter-none transition duration-300 transform group-hover:scale-110"
+                loading="lazy"
+                sizes="(min-width: 1024px) 80px, (min-width: 640px) 64px, 48px"
+                srcSet={`${tech.logo}?w=48 48w, ${tech.logo}?w=64 64w, ${tech.logo}?w=80 80w`}
+              />
+              <p className="mt-3 text-xs sm:text-sm lg:text-base font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-300">
+                {tech.name}
+              </p>
+            </div>
+          </div>
+        ))}
+      </motion.div>
+
+      {/* Fading edges for visual depth */}
+      <div className="absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+    </div>
+  </div>
+</section>
+
 
         {/* Contact Section */}
         <section id="contact" className="py-24 px-6 bg-white">
